@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -33,9 +35,21 @@ android {
     }
 }
 
+kapt {
+    correctErrorTypes true
+}
+
 dependencies {
     implementation androidx.core_ktx
     implementation androidx.appcompat
+
+    // Hilt dependencies.
+    implementation dagger_hilt.hilt_android
+    kapt dagger_hilt.hilt_compiler
+    androidTestImplementation dagger_hilt.hilt_android_testing
+    kaptAndroidTest dagger_hilt.hilt_compiler
+    testImplementation dagger_hilt.hilt_android_testing
+    kaptTest dagger_hilt.hilt_compiler
 
     testImplementation junit
 
