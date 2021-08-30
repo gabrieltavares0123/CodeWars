@@ -53,6 +53,11 @@ dependencies {
     testImplementation dagger_hilt.hilt_android_testing
     kaptTest dagger_hilt.hilt_compiler
 
+    // Room dependencies.
+    implementation room.room_runtime
+    kapt room.room_compiler
+    testImplementation room.room_testing
+
     testImplementation junit
 
     androidTestImplementation androidx.ext_junit

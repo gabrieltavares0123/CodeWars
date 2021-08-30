@@ -12,7 +12,7 @@ ext {
             "ext_junit" : "androidx.test.ext:junit:$ext_junit_version",
             "espresso" : "androidx.test.espresso:espresso-core:$espresso_version",
             "activity_ktx" : "androidx.activity:activity-ktx:$activity_ktx_version",
-            "fragment_ktx" : "androidx.fragment:fragment-ktx:$fragment_ktx_version"
+            "fragment_ktx" : "androidx.fragment:fragment-ktx:$fragment_ktx_version",
     ]
 
     def junit_version = "4.13.2"
@@ -23,5 +23,12 @@ ext {
             "hilt_android" : "com.google.dagger:hilt-android:$hilt_version",
             "hilt_compiler" : "com.google.dagger:hilt-compiler:$hilt_version",
             "hilt_android_testing" : "com.google.dagger:hilt-android-testing:$hilt_version",
+    ]
+
+    def room_version = "2.3.0"
+    room = [
+            "room_runtime" : "androidx.room:room-runtime:$room_version",
+            "room_compiler" : "androidx.room:room-compiler:$room_version",
+            "room_testing" : "androidx.room:room-testing:$room_version"
     ]
 }
