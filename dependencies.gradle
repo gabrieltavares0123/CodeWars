@@ -31,4 +31,10 @@ ext {
             "room_compiler" : "androidx.room:room-compiler:$room_version",
             "room_testing" : "androidx.room:room-testing:$room_version"
     ]
+
+    def retrofit_version = "2.9.0"
+    retrofit = [
+            "retrofit" : "com.squareup.retrofit2:retrofit:$retrofit_version",
+            "converter_gson" : "com.squareup.retrofit2:converter-gson:$retrofit_version",
+    ]
 }

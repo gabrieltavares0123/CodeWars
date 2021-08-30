@@ -58,6 +58,10 @@ dependencies {
     kapt room.room_compiler
     testImplementation room.room_testing
 
+    // Retrofit dependencies.
+    implementation retrofit.retrofit
+    implementation retrofit.converter_gson
+
     testImplementation junit
 
     androidTestImplementation androidx.ext_junit
