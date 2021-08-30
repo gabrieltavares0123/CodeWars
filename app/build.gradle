@@ -42,6 +42,8 @@ kapt {
 dependencies {
     implementation androidx.core_ktx
     implementation androidx.appcompat
+    implementation androidx.activity_ktx
+    implementation androidx.fragment_ktx
 
     // Hilt dependencies.
     implementation dagger_hilt.hilt_android
