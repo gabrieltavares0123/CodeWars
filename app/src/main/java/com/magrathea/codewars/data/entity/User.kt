@@ -16,7 +16,7 @@ sealed class User {
         var clan: String? = null,
         var leaderboardPosition: Int? = 0,
         @TypeConverters var skills: List<String>? = emptyList(),
-        @Embedded var ranks: Ranks? = null,
+        @Embedded var ranks: Ranks.LocalRanks? = null,
         @Embedded var bestLanguage: Language? = null,
         var searchDate: Long? = null,
     )
@@ -29,6 +29,6 @@ sealed class User {
         var clan: String? = null,
         var leaderboardPosition: Int? = 0,
         var skills: List<String>? = emptyList(),
-        var ranks: Ranks? = null,
+        var ranks: Ranks.RemoteRanks? = null,
     ) : Parcelable
 }

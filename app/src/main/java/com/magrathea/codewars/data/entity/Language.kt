@@ -7,5 +7,5 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Language(
     var name: String? = null,
-    @TypeConverters var  rank: Rank? = null,
+    var rank: Int? = 0,
 ) : Parcelable

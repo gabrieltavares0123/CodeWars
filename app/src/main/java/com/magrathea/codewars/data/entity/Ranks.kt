@@ -1,11 +1,19 @@
 package com.magrathea.codewars.data.entity
 
 import android.os.Parcelable
-import androidx.room.TypeConverters
+import androidx.room.Entity
 import kotlinx.parcelize.Parcelize
 
-@Parcelize
-data class Ranks(
-    @TypeConverters var overall: Rank? = null,
-    var languages: List<Language>? = emptyList()
-) : Parcelable
+sealed class Ranks {
+    @Entity
+    data class LocalRanks(
+        var overall: Int? = 0,
+        var languages: Map<String, Int>? = emptyMap()
+    )
+
+    @Parcelize
+    data class RemoteRanks(
+        var overall: Int? = 0,
+        var languages: Map<String, Int>? = emptyMap()
+    ) : Parcelable
+}

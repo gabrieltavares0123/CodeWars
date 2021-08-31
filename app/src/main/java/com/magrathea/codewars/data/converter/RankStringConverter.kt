@@ -1,7 +1,6 @@
 package com.magrathea.codewars.data.converter
 
 import androidx.room.TypeConverter
-import com.magrathea.codewars.data.entity.Rank
 
 object RankStringConverter {
     @TypeConverter
