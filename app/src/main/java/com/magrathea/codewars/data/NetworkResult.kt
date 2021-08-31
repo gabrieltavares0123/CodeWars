@@ -7,7 +7,7 @@ sealed class NetworkResult<T>(
     val message: String? = null,
 ) {
     class Sucess<T>(
-        totalPages: Int, totalItems: Int, data: T
+        totalPages: Int = 1, totalItems: Int = 1, data: T
     ) : NetworkResult<T>(
         totalPages = totalPages,
         totalItems = totalItems,
