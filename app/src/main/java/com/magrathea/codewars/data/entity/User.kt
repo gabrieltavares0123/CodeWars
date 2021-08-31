@@ -4,6 +4,7 @@ import android.os.Parcelable
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
 import kotlinx.parcelize.Parcelize
 
 sealed class User {
@@ -14,7 +15,7 @@ sealed class User {
         var honor: Int? = 0,
         var clan: String? = null,
         var leaderboardPosition: Int? = 0,
-        var skills: List<String>? = emptyList(),
+        @TypeConverters var skills: List<String>? = emptyList(),
         @Embedded var ranks: Ranks? = null,
         @Embedded var bestLanguage: Language? = null,
         var searchDate: Long? = null,

@@ -3,6 +3,7 @@ package com.magrathea.codewars.data.entity
 import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
 import kotlinx.parcelize.Parcelize
 
 sealed class CompletedChallenge {
@@ -12,7 +13,7 @@ sealed class CompletedChallenge {
         var name: String,
         var slug: String,
         var completedAt: String,
-        var completedLanguages: List<String> = emptyList(),
+        @TypeConverters var completedLanguages: List<String> = emptyList(),
     )
 
     @Parcelize
