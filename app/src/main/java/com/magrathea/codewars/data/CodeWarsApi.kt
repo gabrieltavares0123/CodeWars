@@ -1,6 +1,6 @@
 package com.magrathea.codewars.data
 
-import com.magrathea.codewars.model.remote.User
+import com.magrathea.codewars.data.entity.User
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
