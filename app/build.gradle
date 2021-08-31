@@ -66,6 +66,9 @@ dependencies {
     implementation navigation.navigation_fragment_ktx
     implementation navigation.navigation_ui_ktx
 
+    // Paging dependencies.
+    implementation paging
+
     testImplementation junit
 
     androidTestImplementation androidx.ext_junit
