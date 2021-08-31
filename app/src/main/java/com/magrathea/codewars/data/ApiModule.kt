@@ -6,7 +6,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 @Module
-class CodeWarsApiModule {
+class ApiModule {
     companion object {
         private const val BASE_URL = "https://www.codewars.com/api/v1/"
     }
