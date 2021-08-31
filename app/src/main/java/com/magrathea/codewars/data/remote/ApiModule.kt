@@ -1,4 +1,4 @@
-package com.magrathea.codewars.data
+package com.magrathea.codewars.data.remote
 
 import dagger.Module
 import dagger.Provides

@@ -1,4 +1,4 @@
-package com.magrathea.codewars.data
+package com.magrathea.codewars.data.remote
 
 sealed class NetworkResult<T>(
     val totalPages: Int? = 0,

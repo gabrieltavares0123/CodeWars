@@ -1,4 +1,4 @@
-package com.magrathea.codewars.data
+package com.magrathea.codewars.data.local
 
 import android.app.Application
 import androidx.room.Room
