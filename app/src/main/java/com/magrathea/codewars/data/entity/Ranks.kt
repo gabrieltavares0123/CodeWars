@@ -5,6 +5,6 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Ranks(
-    val overall: Rank? = null,
-    val languages: List<Language>? = emptyList()
+    var overall: Rank? = null,
+    var languages: List<Language>? = emptyList()
 ) : Parcelable

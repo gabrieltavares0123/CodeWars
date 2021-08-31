@@ -5,6 +5,6 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Language(
-    val name: String? = null,
-    val  rank: Rank? = null,
+    var name: String? = null,
+    var  rank: Rank? = null,
 ) : Parcelable

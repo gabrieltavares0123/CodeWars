@@ -9,18 +9,18 @@ sealed class CompletedChallenge {
     @Entity
     data class LocalCompletedChallenge(
         @PrimaryKey(autoGenerate = true) val id: String,
-        val name: String,
-        val slug: String,
-        val completedAt: String,
-        val completedLanguages: List<String> = emptyList(),
+        var name: String,
+        var slug: String,
+        var completedAt: String,
+        var completedLanguages: List<String> = emptyList(),
     )
 
     @Parcelize
     data class RemoteCompletedChallenge(
-        val id: String,
-        val name: String,
-        val slug: String,
-        val completedAt: String,
-        val completedLanguages: List<String> = emptyList(),
+        var id: String,
+        var name: String,
+        var slug: String,
+        var completedAt: String,
+        var completedLanguages: List<String> = emptyList(),
     ) : Parcelable
 }

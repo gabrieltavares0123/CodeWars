@@ -5,5 +5,5 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Rank(
-    val score: Int? = 0
+    var score: Int? = 0
 ) : Parcelable
