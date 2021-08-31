@@ -37,4 +37,10 @@ ext {
             "retrofit" : "com.squareup.retrofit2:retrofit:$retrofit_version",
             "converter_gson" : "com.squareup.retrofit2:converter-gson:$retrofit_version",
     ]
+
+    def navigation_version = "2.3.5"
+    navigation = [
+            "navigation_fragment_ktx" : "androidx.navigation:navigation-fragment-ktx:$navigation_version",
+            "navigation_ui_ktx" : "androidx.navigation:navigation-ui-ktx:$navigation_version",
+    ]
 }

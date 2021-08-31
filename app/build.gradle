@@ -62,6 +62,10 @@ dependencies {
     implementation retrofit.retrofit
     implementation retrofit.converter_gson
 
+    // Navigation dependencies.
+    implementation navigation.navigation_fragment_ktx
+    implementation navigation.navigation_ui_ktx
+
     testImplementation junit
 
     androidTestImplementation androidx.ext_junit
