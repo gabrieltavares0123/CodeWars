@@ -7,6 +7,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Transaction
 import androidx.room.Query
 import com.magrathea.codewars.data.entity.AuthoredChallenge
+import com.magrathea.codewars.data.entity.User
 import com.magrathea.codewars.data.entity.UserWithAuthoredChallenges
 
 @Dao
@@ -14,7 +15,8 @@ interface AuthoredChallengeDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun save(authoredChallenge: AuthoredChallenge.LocalAuthoredChallenge)
 
+    // TODO: Find a way to filter by user.
     @Transaction
-    @Query(value = "SELECT * FROM AuthoredChallenge.LocalAuthoredChallenge WHERE userAuthorId = :userId")
-    suspend fun allAuthoredChallengesByUser(userId: Int): DataSource.Factory<Int, UserWithAuthoredChallenges>
+    @Query(value = "SELECT * FROM AuthoredChallenge.LocalAuthoredChallenge")
+    suspend fun allAuthoredChallengesByUser(user: User.LocalUser): DataSource.Factory<Int, UserWithAuthoredChallenges>
 }

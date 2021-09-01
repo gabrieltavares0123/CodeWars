@@ -10,10 +10,10 @@ import com.magrathea.codewars.data.entity.User
 @Dao
 interface UserDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun save(user: User)
+    suspend fun save(user: User.LocalUser)
 
     @Query(value = "SELECT * FROM User.LocalUser WHERE username = :username")
-    suspend fun findUserByUserName(username: String): User?
+    suspend fun findUserByUserName(username: String): User.LocalUser?
 
     @Query(value = "SELECT * FROM User.LocalUser ORDER BY honor DESC LIMIT 5")
     suspend fun fiveUsersOrderedByHonor(): DataSource.Factory<Int, User.LocalUser>
