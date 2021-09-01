@@ -5,17 +5,19 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.magrathea.codewars.data.converter.ListStringConverter
 import com.magrathea.codewars.data.converter.MapStringConverter
-import com.magrathea.codewars.data.entity.AuthoredChallenge
-import com.magrathea.codewars.data.entity.CompletedChallenge
-import com.magrathea.codewars.data.entity.User
 import com.magrathea.codewars.data.local.dao.AuthoredChallengeDao
 import com.magrathea.codewars.data.local.dao.UserDao
+import com.magrathea.codewars.data.local.entity.*
+
 
 @Database(
     entities = [
-        User.LocalUser::class,
-        AuthoredChallenge.LocalAuthoredChallenge::class,
-        CompletedChallenge.LocalCompletedChallenge::class,
+        User::class,
+        AuthoredChallenge::class,
+        CompletedChallenge::class,
+        Language::class,
+        Ranks::class,
+        UserCompletedChallengeCrossRef::class,
     ],
     version = 1,
     exportSchema = false

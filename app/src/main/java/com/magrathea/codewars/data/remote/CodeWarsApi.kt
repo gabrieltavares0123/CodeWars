@@ -1,26 +1,26 @@
 package com.magrathea.codewars.data.remote
 
-import com.magrathea.codewars.data.entity.AuthoredChallenge
-import com.magrathea.codewars.data.entity.CompletedChallenge
-import com.magrathea.codewars.data.entity.User
-import retrofit2.Call
+import com.magrathea.codewars.data.remote.entity.AuthoredChallenge
+import com.magrathea.codewars.data.remote.entity.CompletedChallenge
+import com.magrathea.codewars.data.remote.entity.User
+import kotlinx.coroutines.flow.Flow
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface CodeWarsApi {
     @GET(value = "/users/{user}")
-    fun findUserByUserName(@Path(value = "user") user: String): Call<User.RemoteUser>
+    suspend fun findUserByUserName(@Path(value = "user") user: String): Flow<User>
 
     @GET(value = "users/{username}/code-challenges/completed")
-    fun findCompletedChallengesByUser(
+    suspend fun findCompletedChallengesByUser(
         @Path(value = "username") username: String,
         @Query(value = "page") page: Int,
-    ): Call<CompletedChallenge.RemoteCompletedChallenge>
+    ): Flow<CompletedChallenge>
 
     @GET(value = "users/{username}/code-challenges/authored")
-    fun findAuthoredChallengesByUser(
+    suspend fun findAuthoredChallengesByUser(
         @Path(value = "username") username: String,
         @Query(value = "page") page: Int,
-    ): Call<AuthoredChallenge.RemoteAuthoredChallenge>
+    ): Flow<AuthoredChallenge>
 }
