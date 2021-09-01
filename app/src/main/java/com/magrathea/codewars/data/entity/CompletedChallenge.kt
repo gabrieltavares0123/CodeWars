@@ -1,27 +1,26 @@
 package com.magrathea.codewars.data.entity
 
 import android.os.Parcelable
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-import androidx.room.TypeConverters
+import androidx.room.*
 import kotlinx.parcelize.Parcelize
 
 sealed class CompletedChallenge {
-    @Entity
+    @Entity(indices = [Index(value = ["completedChallengeId"], unique = true)])
     data class LocalCompletedChallenge(
-        @PrimaryKey(autoGenerate = true) val id: String,
-        var name: String,
-        var slug: String,
-        var completedAt: String,
-        @TypeConverters var completedLanguages: List<String> = emptyList(),
+        @PrimaryKey var id: Int,
+        var completedChallengeId: String,
+        var name: String? = null,
+        var slug: String? = null,
+        var completedAt: String? = null,
+        @TypeConverters var completedLanguages: List<String>? = emptyList(),
     )
 
     @Parcelize
     data class RemoteCompletedChallenge(
         var id: String,
-        var name: String,
-        var slug: String,
-        var completedAt: String,
-        var completedLanguages: List<String> = emptyList(),
+        var name: String? = null,
+        var slug: String? = null,
+        var completedAt: String? = null,
+        var completedLanguages: List<String>? = emptyList(),
     ) : Parcelable
 }

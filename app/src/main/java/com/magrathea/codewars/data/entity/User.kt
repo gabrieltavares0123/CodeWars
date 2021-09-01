@@ -1,16 +1,14 @@
 package com.magrathea.codewars.data.entity
 
 import android.os.Parcelable
-import androidx.room.Embedded
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-import androidx.room.TypeConverters
+import androidx.room.*
 import kotlinx.parcelize.Parcelize
 
 sealed class User {
-    @Entity
+    @Entity(indices = [Index(value = ["userName"], unique = true)])
     data class LocalUser(
-        @PrimaryKey(autoGenerate = true) var userName: String? = null,
+        @PrimaryKey var id: Int,
+        var userName: String,
         var name: String? = null,
         var honor: Int? = 0,
         var clan: String? = null,

@@ -1,15 +1,14 @@
 package com.magrathea.codewars.data.entity
 
 import android.os.Parcelable
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-import androidx.room.TypeConverters
+import androidx.room.*
 import kotlinx.parcelize.Parcelize
 
 sealed class AuthoredChallenge {
-    @Entity
+    @Entity(indices = [Index(value = ["authoredChallengeId"], unique = true)])
     data class LocalAuthoredChallenge(
-        @PrimaryKey(autoGenerate = true) var id: String? = null,
+        @PrimaryKey(autoGenerate = true) var id: Int,
+        var authoredChallengeId: String,
         var name: String? = null,
         var description: String? = null,
         var rank: Int? = null,
