@@ -7,7 +7,7 @@ import kotlinx.parcelize.Parcelize
 sealed class User {
     @Entity(indices = [Index(value = ["userName"], unique = true)])
     data class LocalUser(
-        @PrimaryKey var id: Int,
+        @PrimaryKey var userId: Int,
         var userName: String,
         var name: String? = null,
         var honor: Int? = 0,

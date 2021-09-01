@@ -15,6 +15,7 @@ sealed class AuthoredChallenge {
         var rankName: String? = null,
         @TypeConverters var tags: List<String>? = emptyList(),
         @TypeConverters var languages: List<String>? = emptyList(),
+        var userAuthorId: Int,
     )
 
     @Parcelize
