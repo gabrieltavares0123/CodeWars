@@ -17,7 +17,7 @@ sealed class User {
         @Embedded var ranks: Ranks.LocalRanks? = null,
         @Embedded var bestLanguage: Language? = null,
         var searchDate: Long? = null,
-    )
+    ): User()
 
     @Parcelize
     data class RemoteUser(
@@ -28,5 +28,5 @@ sealed class User {
         var leaderboardPosition: Int? = 0,
         var skills: List<String>? = emptyList(),
         var ranks: Ranks.RemoteRanks? = null,
-    ) : Parcelable
+    ): User(), Parcelable
 }

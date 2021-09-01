@@ -16,7 +16,7 @@ sealed class AuthoredChallenge {
         @TypeConverters var tags: List<String>? = emptyList(),
         @TypeConverters var languages: List<String>? = emptyList(),
         var userAuthorId: Int,
-    )
+    ): AuthoredChallenge()
 
     @Parcelize
     data class RemoteAuthoredChallenge(

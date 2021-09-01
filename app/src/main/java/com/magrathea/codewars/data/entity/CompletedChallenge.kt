@@ -13,7 +13,7 @@ sealed class CompletedChallenge {
         var slug: String? = null,
         var completedAt: String? = null,
         @TypeConverters var completedLanguages: List<String>? = emptyList(),
-    )
+    ): CompletedChallenge()
 
     @Parcelize
     data class RemoteCompletedChallenge(
@@ -22,5 +22,5 @@ sealed class CompletedChallenge {
         var slug: String? = null,
         var completedAt: String? = null,
         var completedLanguages: List<String>? = emptyList(),
-    ) : Parcelable
+    ): CompletedChallenge(), Parcelable
 }
