@@ -1,22 +1,32 @@
 package com.magrathea.codewars.data.entity
 
 import android.os.Parcelable
-import kotlinx.parcelize.IgnoredOnParcel
+import androidx.room.*
 import kotlinx.parcelize.Parcelize
 
-@Parcelize
-data class User(
-    val userName: String? = null,
-    val name: String? = null,
-    val honor: Int? = 0,
-    val clan: String? = null,
-    val leaderboardPosition: Int?,
-    val skills: List<String>? = emptyList(),
-    val ranks: Ranks? = null,
-) : Parcelable {
-    @IgnoredOnParcel
-    val bestLanguage: Language? = null
+sealed class User {
+    @Entity(indices = [Index(value = ["userName"], unique = true)])
+    data class LocalUser(
+        @PrimaryKey var userId: Int,
+        var userName: String,
+        var name: String? = null,
+        var honor: Int? = 0,
+        var clan: String? = null,
+        var leaderboardPosition: Int? = 0,
+        @TypeConverters var skills: List<String>? = emptyList(),
+        @Embedded var ranks: Ranks.LocalRanks? = null,
+        @Embedded var bestLanguage: Language? = null,
+        var searchDate: Long? = null,
+    )
 
-    @IgnoredOnParcel
-    val searchDate: Long? = null
+    @Parcelize
+    data class RemoteUser(
+        var userName: String? = null,
+        var name: String? = null,
+        var honor: Int? = 0,
+        var clan: String? = null,
+        var leaderboardPosition: Int? = 0,
+        var skills: List<String>? = emptyList(),
+        var ranks: Ranks.RemoteRanks? = null,
+    ) : Parcelable
 }

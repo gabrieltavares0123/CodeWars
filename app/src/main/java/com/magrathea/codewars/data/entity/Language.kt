@@ -1,10 +1,12 @@
 package com.magrathea.codewars.data.entity
 
-import android.os.Parcelable
-import kotlinx.parcelize.Parcelize
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
-@Parcelize
+
+@Entity
 data class Language(
-    val name: String? = null,
-    val  rank: Rank? = null,
-) : Parcelable
+    @PrimaryKey(autoGenerate = true) var languageId: Int,
+    var languageName: String,
+    var rank: Int? = 0,
+)

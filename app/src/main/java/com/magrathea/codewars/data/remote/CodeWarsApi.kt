@@ -1,4 +1,4 @@
-package com.magrathea.codewars.data
+package com.magrathea.codewars.data.remote
 
 import com.magrathea.codewars.data.entity.AuthoredChallenge
 import com.magrathea.codewars.data.entity.CompletedChallenge

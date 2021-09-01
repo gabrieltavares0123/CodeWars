@@ -45,6 +45,7 @@ dependencies {
     implementation androidx.appcompat
     implementation androidx.activity_ktx
     implementation androidx.fragment_ktx
+    implementation material
 
     // Hilt dependencies.
     implementation dagger_hilt.hilt_android
