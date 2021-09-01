@@ -56,6 +56,7 @@ dependencies {
     kaptTest dagger_hilt.hilt_compiler
 
     // Room dependencies.
+    implementation room.room_ktx
     implementation room.room_runtime
     kapt room.room_compiler
     testImplementation room.room_testing
