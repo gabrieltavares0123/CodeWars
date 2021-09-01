@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-data class Language(
+data class LanguageEntity(
     @PrimaryKey(autoGenerate = true) var languageId: Int,
     var languageName: String,
     var rank: Int? = 0,

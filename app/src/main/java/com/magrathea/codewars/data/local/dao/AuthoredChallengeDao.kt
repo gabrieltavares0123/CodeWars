@@ -5,13 +5,13 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.magrathea.codewars.data.local.entity.AuthoredChallenge
+import com.magrathea.codewars.data.local.entity.AuthoredChallengeEntity
 
 @Dao
 interface AuthoredChallengeDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun save(authoredChallenge: AuthoredChallenge)
+    suspend fun save(authoredChallengeEntity: AuthoredChallengeEntity)
 
-    @Query(value = "SELECT * FROM AuthoredChallenge WHERE userNameAuthor LIKE :username")
-    fun allAuthoredChallengesByUserName(username: String): PagingSource<Int, AuthoredChallenge>
+    @Query(value = "SELECT * FROM AuthoredChallengeEntity WHERE userNameAuthor LIKE :username")
+    fun allAuthoredChallengesByUserName(username: String): PagingSource<Int, AuthoredChallengeEntity>
 }

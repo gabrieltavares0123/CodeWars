@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
 
 @Entity
-data class AuthoredChallenge(
+data class AuthoredChallengeEntity(
     @PrimaryKey var id: String,
     var name: String? = null,
     var description: String? = null,

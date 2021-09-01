@@ -4,7 +4,7 @@ import androidx.room.Embedded
 import androidx.room.Relation
 
 data class UserWithAuthoredChallenges(
-    @Embedded val user: User,
+    @Embedded val userEntity: UserEntity,
     @Relation(parentColumn = "userName", entityColumn = "userNameAuthor")
-    val authoredChallenges: List<AuthoredChallenge>
+    val authoredChallengeEntities: List<AuthoredChallengeEntity>
 )

@@ -12,12 +12,12 @@ import com.magrathea.codewars.data.local.entity.*
 
 @Database(
     entities = [
-        User::class,
-        AuthoredChallenge::class,
-        CompletedChallenge::class,
-        Language::class,
-        Ranks::class,
-        UserCompletedChallengeCrossRef::class,
+        UserEntity::class,
+        AuthoredChallengeEntity::class,
+        CompletedChallengeEntity::class,
+        LanguageEntity::class,
+        RanksEntity::class,
+        UserCompletedChallengeCrossRefEntity::class,
     ],
     version = 1,
     exportSchema = false
