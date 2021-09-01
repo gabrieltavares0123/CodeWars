@@ -14,8 +14,7 @@ interface CompletedChallengeDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun save(completedChallenge: CompletedChallenge)
 
-    // TODO: Find a way to filter by username.
     @Transaction
     @Query(value = "SELECT * FROM CompletedChallenge")
-    fun allCompletedChallengesByUserName(): PagingSource<Int, UserWithCompletedChallenges>
+    fun allCompletedChallengesByUserName(username: String): PagingSource<Int, UserWithCompletedChallenges>
 }
