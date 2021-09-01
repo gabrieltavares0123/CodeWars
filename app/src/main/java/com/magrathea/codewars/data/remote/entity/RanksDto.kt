@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class Ranks(
+data class RanksDto(
     var overall: Int? = 0,
     var languages: Map<String, Int>? = emptyMap()
 ): Parcelable

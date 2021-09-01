@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class CompletedChallenge(
+data class CompletedChallengeDto(
     var id: String,
     var name: String? = null,
     var slug: String? = null,
