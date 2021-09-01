@@ -1,7 +1,5 @@
 package com.magrathea.codewars.domain.model
 
-import com.magrathea.codewars.data.local.entity.LanguageEntity
-
 data class User(
     val userName: String,
     val name: String? = null,
@@ -10,6 +8,6 @@ data class User(
     val leaderboardPosition: Int? = 0,
     val skills: List<String>? = emptyList(),
     val ranks: Ranks? = null,
-    val bestLanguageEntity: LanguageEntity? = null,
+    val bestLanguage: Language? = null,
     val searchDate: Long? = null,
 )
