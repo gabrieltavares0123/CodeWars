@@ -8,6 +8,7 @@ import com.magrathea.codewars.data.converter.MapStringConverter
 import com.magrathea.codewars.data.entity.AuthoredChallenge
 import com.magrathea.codewars.data.entity.CompletedChallenge
 import com.magrathea.codewars.data.entity.User
+import com.magrathea.codewars.data.local.dao.AuthoredChallengeDao
 import com.magrathea.codewars.data.local.dao.UserDao
 
 @Database(
@@ -27,4 +28,5 @@ import com.magrathea.codewars.data.local.dao.UserDao
 )
 abstract class CodeWarsDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
+    abstract fun authoredChallengeDao(): AuthoredChallengeDao
 }
