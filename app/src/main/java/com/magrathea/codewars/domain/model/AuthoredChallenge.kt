@@ -1,10 +1,6 @@
-package com.magrathea.codewars.data.remote.entity
+package com.magrathea.codewars.domain.model
 
-import android.os.Parcelable
-import kotlinx.parcelize.Parcelize
-
-@Parcelize
-data class AuthoredChallengeDto(
+data class AuthoredChallenge(
     var id: String,
     var name: String? = null,
     var description: String? = null,
@@ -12,4 +8,4 @@ data class AuthoredChallengeDto(
     var rankName: String? = null,
     var tags: List<String>? = emptyList(),
     var languages: List<String>? = emptyList(),
-): Parcelable
+)
