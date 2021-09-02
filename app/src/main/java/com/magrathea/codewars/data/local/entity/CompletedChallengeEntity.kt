@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
 
 @Entity
-data class CompletedChallenge(
+data class CompletedChallengeEntity(
     @PrimaryKey var id: String,
     var name: String? = null,
     var slug: String? = null,

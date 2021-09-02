@@ -9,15 +9,12 @@ import com.magrathea.codewars.data.local.dao.AuthoredChallengeDao
 import com.magrathea.codewars.data.local.dao.UserDao
 import com.magrathea.codewars.data.local.entity.*
 
-
 @Database(
     entities = [
-        User::class,
-        AuthoredChallenge::class,
-        CompletedChallenge::class,
-        Language::class,
-        Ranks::class,
-        UserCompletedChallengeCrossRef::class,
+        UserEntity::class,
+        AuthoredChallengeEntity::class,
+        CompletedChallengeEntity::class,
+        UserCompletedChallengeCrossRefEntity::class,
     ],
     version = 1,
     exportSchema = false

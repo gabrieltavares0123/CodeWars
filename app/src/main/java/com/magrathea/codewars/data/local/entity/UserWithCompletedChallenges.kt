@@ -5,11 +5,11 @@ import androidx.room.Junction
 import androidx.room.Relation
 
 data class UserWithCompletedChallenges(
-    @Embedded val user: User,
+    @Embedded val userEntity: UserEntity,
     @Relation(
         parentColumn = "userName",
         entityColumn = "id",
-        associateBy = Junction(UserCompletedChallengeCrossRef::class)
+        associateBy = Junction(UserCompletedChallengeCrossRefEntity::class)
     )
-    val completedChallenges: List<CompletedChallenge>
+    val completedChallengeEntities: List<CompletedChallengeEntity>
 )
