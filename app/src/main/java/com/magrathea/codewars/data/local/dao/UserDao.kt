@@ -5,7 +5,6 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.magrathea.codewars.data.local.entity.UserEntity
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface UserDao {
@@ -13,11 +12,11 @@ interface UserDao {
     fun save(userEntity: UserEntity)
 
     @Query(value = "SELECT * FROM UserEntity WHERE username = :username")
-    fun findUserByUserName(username: String): Flow<UserEntity?>
+    suspend fun findUserByUserName(username: String): UserEntity?
 
     @Query(value = "SELECT * FROM UserEntity ORDER BY honor DESC LIMIT 5")
-    fun fiveUsersOrderedByHonor(): Flow<List<UserEntity>>
+    suspend fun fiveUsersOrderedByHonor(): List<UserEntity>
 
     @Query(value = "SELECT * FROM UserEntity ORDER BY searchDate DESC LIMIT 5")
-    fun fiveLastSearchedUsersBySearchDate(): Flow<List<UserEntity>>
+    suspend fun fiveLastSearchedUsersBySearchDate(): List<UserEntity>
 }
