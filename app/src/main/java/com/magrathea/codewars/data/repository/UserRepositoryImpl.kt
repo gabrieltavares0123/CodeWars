@@ -9,26 +9,19 @@ import com.magrathea.codewars.data.remote.service.UserService
 import com.magrathea.codewars.domain.model.Ranks
 import com.magrathea.codewars.domain.model.User
 import com.magrathea.codewars.domain.repository.UserRepository
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.flowOf
 import javax.inject.Inject
 
 class UserRepositoryImpl @Inject constructor(
     private val userDao: UserDao,
     private val userService: UserService,
 ) : UserRepository {
-    override suspend fun findUserByUserName(username: String): Flow<User?> {
+    override suspend fun findUserByUserName(username: String): User? {
         userService.findUserByUserName(username).collect { userDto ->
             userDao.save(userDto.toUserEntity())
         }
 
-        var ssotUser: User? = null
-        userDao.findUserByUserName(username).collect { userEntity ->
-            ssotUser = userEntity?.toUser()
-        }
-
-        return flowOf(ssotUser)
+        return userDao.findUserByUserName(username)?.toDomainUser()
     }
 }
 
@@ -44,7 +37,7 @@ fun UserDto.toUserEntity(): UserEntity {
     )
 }
 
-fun UserEntity.toUser(): User {
+fun UserEntity.toDomainUser(): User {
     return User(
         userName = this.userName,
         name = this.name,
