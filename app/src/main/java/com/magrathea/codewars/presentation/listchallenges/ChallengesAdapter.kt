@@ -1,4 +1,4 @@
-package com.magrathea.codewars.presentation.challenges
+package com.magrathea.codewars.presentation.listchallenges
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

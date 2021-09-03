@@ -1,10 +1,8 @@
-package com.magrathea.codewars.presentation.challenges
+package com.magrathea.codewars.presentation.listchallenges
 
 import androidx.fragment.app.*
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.magrathea.codewars.domain.model.User
-import com.magrathea.codewars.presentation.challenges.listchallenges.ListAuthoredChallengesFragment
-import com.magrathea.codewars.presentation.challenges.listchallenges.ListCompletedChallengesFragment
 
 class ChallengesPageAdapter(
     fragmentActivity: FragmentActivity,

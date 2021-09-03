@@ -1,4 +1,4 @@
-package com.magrathea.codewars.presentation.challenges
+package com.magrathea.codewars.presentation.listchallenges
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.magrathea.codewars.R
-import com.magrathea.codewars.domain.model.ChallengeType
 import com.magrathea.codewars.domain.model.Language
 import com.magrathea.codewars.domain.model.Ranks
 import com.magrathea.codewars.domain.model.User

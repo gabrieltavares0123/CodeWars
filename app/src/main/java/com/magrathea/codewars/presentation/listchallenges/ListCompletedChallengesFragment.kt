@@ -1,4 +1,4 @@
-package com.magrathea.codewars.presentation.challenges.listchallenges
+package com.magrathea.codewars.presentation.listchallenges
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,9 +8,9 @@ import androidx.fragment.app.Fragment
 import com.magrathea.codewars.R
 import com.magrathea.codewars.domain.model.User
 
-class ListAuthoredChallengesFragment(private val user: User) : Fragment() {
+class ListCompletedChallengesFragment(private val user: User) : Fragment() {
     companion object {
-        fun newInstance(user: User) = ListAuthoredChallengesFragment(user)
+        fun newInstance(user: User) = ListCompletedChallengesFragment(user)
     }
 
     override fun onCreateView(

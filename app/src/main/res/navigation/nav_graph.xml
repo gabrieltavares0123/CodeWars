@@ -30,7 +30,7 @@
     </fragment>
     <fragment
         android:id="@+id/challengesMainFragment"
-        android:name="com.magrathea.codewars.presentation.challenges.ChallengesMainFragment"
+        android:name="com.magrathea.codewars.presentation.listchallenges.ChallengesMainFragment"
         android:label="ChallengesMainFragment" >
         <argument
             android:name="userName"
@@ -46,7 +46,7 @@
     </fragment>
     <fragment
         android:id="@+id/listAuthoredChallengesFragment"
-        android:name="com.magrathea.codewars.presentation.challenges.listchallenges.ListAuthoredChallengesFragment"
+        android:name="com.magrathea.codewars.presentation.listchallenges.ListAuthoredChallengesFragment"
         android:label="ListAuthoredChallengesFragment" >
         <action
             android:id="@+id/action_listAuthoredChallengesFragment_to_authoredChallengeDetailsFragment"
@@ -57,7 +57,7 @@
     </fragment>
     <fragment
         android:id="@+id/listCompletedChallengesFragment"
-        android:name="com.magrathea.codewars.presentation.challenges.listchallenges.ListCompletedChallengesFragment"
+        android:name="com.magrathea.codewars.presentation.listchallenges.ListCompletedChallengesFragment"
         android:label="ListCompletedChallengesFragment" >
         <action
             android:id="@+id/action_listCompletedChallengesFragment_to_completedChallengeDetailsFragment"

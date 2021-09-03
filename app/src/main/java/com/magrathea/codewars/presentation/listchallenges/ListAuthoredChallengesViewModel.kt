@@ -1,4 +1,4 @@
-package com.magrathea.codewars.presentation.challenges.listchallenges
+package com.magrathea.codewars.presentation.listchallenges
 
 import androidx.lifecycle.ViewModel
 
