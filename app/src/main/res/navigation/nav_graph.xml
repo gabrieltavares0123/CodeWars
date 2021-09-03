@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/listMembersFragment"
         android:name="com.magrathea.codewars.presentation.listmembers.ListMembersFragment"
-        android:label="ListMembersFragment" >
+        android:label="ListMembersFragment">
         <action
             android:id="@+id/action_select_a_member"
             app:destination="@id/listChallengesFragment" />
@@ -15,7 +15,7 @@
     <fragment
         android:id="@+id/listChallengesFragment"
         android:name="com.magrathea.codewars.presentation.listchallenges.ListChallengesFragment"
-        android:label="ListChallengesFragment" >
+        android:label="ListChallengesFragment">
         <action
             android:id="@+id/action_select_an_authored_challenge"
             app:destination="@id/authoredChallengeDetailsFragment" />
