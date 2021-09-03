@@ -9,19 +9,8 @@
         android:name="com.magrathea.codewars.presentation.listmembers.ListMembersFragment"
         android:label="ListMembersFragment">
         <action
-            android:id="@+id/action_select_a_member"
-            app:destination="@id/listChallengesFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/listChallengesFragment"
-        android:name="com.magrathea.codewars.presentation.listchallenges.ListChallengesFragment"
-        android:label="ListChallengesFragment">
-        <action
-            android:id="@+id/action_select_an_authored_challenge"
-            app:destination="@id/authoredChallengeDetailsFragment" />
-        <action
-            android:id="@+id/action_select_a_completed_challenge"
-            app:destination="@id/completedChallengeDetailsFragment" />
+            android:id="@+id/action_listMembersFragment_to_challengesMainFragment"
+            app:destination="@id/challengesMainFragment" />
     </fragment>
     <fragment
         android:id="@+id/authoredChallengeDetailsFragment"
@@ -31,4 +20,15 @@
         android:id="@+id/completedChallengeDetailsFragment"
         android:name="com.magrathea.codewars.presentation.challengedetais.CompletedChallengeDetailsFragment"
         android:label="CompletedChallengeDetailsFragment" />
+    <fragment
+        android:id="@+id/challengesMainFragment"
+        android:name="com.magrathea.codewars.presentation.challenges.ChallengesMainFragment"
+        android:label="ChallengesMainFragment" >
+        <action
+            android:id="@+id/action_challengesMainFragment_to_authoredChallengeDetailsFragment"
+            app:destination="@id/authoredChallengeDetailsFragment" />
+        <action
+            android:id="@+id/action_challengesMainFragment_to_completedChallengeDetailsFragment"
+            app:destination="@id/completedChallengeDetailsFragment" />
+    </fragment>
 </navigation>

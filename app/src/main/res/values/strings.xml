@@ -4,4 +4,6 @@
     <string name="rank_label">Rank</string>
     <string name="best_language_label">Best language</string>
     <string name="honor_label">Honor</string>
+    <string name="authored_challenges">Authored</string>
+    <string name="completed_challenges">Completed</string>
 </resources>
