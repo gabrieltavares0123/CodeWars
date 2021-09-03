@@ -1,95 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:clickable="true"
+    android:focusable="true"
+    app:cardBackgroundColor="@color/teal_200"
+    app:cardElevation="8dp"
+    app:contentPadding="8dp"
+    tools:layout_conversion_absoluteHeight="35dp"
+    tools:layout_conversion_absoluteWidth="402dp"
+    tools:layout_editor_absoluteX="5dp"
+    tools:layout_editor_absoluteY="5dp">
 
-    <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp">
+        android:orientation="horizontal">
 
         <TextView
-            android:layout_width="match_parent"
+            android:id="@+id/tv_best_language"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="8dp">
+            android:layout_margin="4dp"
+            android:layout_weight="1"
+            android:text="TextView"
+            android:textAlignment="center" />
 
-            <TextView
-                android:id="@+id/tv_member_name"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="name"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="Name or username" />
+        <TextView
+            android:id="@+id/tv_rank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:layout_weight="1"
+            android:text="TextView"
+            android:textAlignment="center"
+            tools:layout_conversion_absoluteHeight="19dp"
+            tools:layout_conversion_absoluteWidth="58dp"
+            tools:layout_editor_absoluteX="13dp"
+            tools:layout_editor_absoluteY="13dp" />
 
-            <TextView
-                android:id="@+id/tv_rank_label"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/rank_label"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-                app:layout_constraintEnd_toStartOf="@id/tv_best_language_label"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_member_name" />
+        <TextView
+            android:id="@+id/tv_best_language_rank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:layout_weight="1"
+            android:text="TextView"
+            android:textAlignment="center" />
 
-            <TextView
-                android:id="@+id/tv_rank_value"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="1234687"
-                app:layout_constraintEnd_toStartOf="@id/tv_best_language_value"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_rank_label"
-                tools:text="1" />
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:layout_weight="1"
+            android:text="TextView"
+            android:textAlignment="center"
+            tools:layout_conversion_absoluteHeight="19dp"
+            tools:layout_conversion_absoluteWidth="58dp"
+            tools:layout_editor_absoluteX="13dp"
+            tools:layout_editor_absoluteY="13dp" />
+    </LinearLayout>
 
-            <TextView
-                android:id="@+id/tv_best_language_label"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/best_language_label"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-                app:layout_constraintEnd_toStartOf="@id/tv_honor_label"
-                app:layout_constraintStart_toEndOf="@id/tv_rank_label"
-                app:layout_constraintTop_toBottomOf="@id/tv_member_name" />
-
-            <TextView
-                android:id="@+id/tv_best_language_value"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="kotlin"
-                app:layout_constraintEnd_toStartOf="@id/tv_honor_value"
-                app:layout_constraintStart_toEndOf="@id/tv_rank_value"
-                app:layout_constraintTop_toBottomOf="@id/tv_best_language_label"
-                tools:text="Javascript (12323pts)" />
-
-            <TextView
-                android:id="@+id/tv_honor_label"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/honor_label"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/tv_best_language_label"
-                app:layout_constraintTop_toBottomOf="@id/tv_member_name" />
-
-            <TextView
-                android:id="@+id/tv_honor_value"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="10389"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/tv_best_language_value"
-                app:layout_constraintTop_toBottomOf="@id/tv_honor_label"
-                tools:text="14234" />
-        </TextView>
-    </com.google.android.material.card.MaterialCardView>
-</layout>
+</com.google.android.material.card.MaterialCardView>
