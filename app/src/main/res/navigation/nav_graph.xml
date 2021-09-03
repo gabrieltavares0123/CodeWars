@@ -15,20 +15,53 @@
     <fragment
         android:id="@+id/authoredChallengeDetailsFragment"
         android:name="com.magrathea.codewars.presentation.challengedetais.AuthoredChallengeDetailsFragment"
-        android:label="AuthoredChallengeDetailsFragment" />
+        android:label="AuthoredChallengeDetailsFragment" >
+        <argument
+            android:name="authoredChallengeId"
+            app:argType="integer" />
+    </fragment>
     <fragment
         android:id="@+id/completedChallengeDetailsFragment"
         android:name="com.magrathea.codewars.presentation.challengedetais.CompletedChallengeDetailsFragment"
-        android:label="CompletedChallengeDetailsFragment" />
+        android:label="CompletedChallengeDetailsFragment" >
+        <argument
+            android:name="completedChallengeId"
+            app:argType="integer" />
+    </fragment>
     <fragment
         android:id="@+id/challengesMainFragment"
         android:name="com.magrathea.codewars.presentation.challenges.ChallengesMainFragment"
         android:label="ChallengesMainFragment" >
+        <argument
+            android:name="userName"
+            app:argType="string" />
+        <argument android:name="appBarTitle"
+            app:argType="string" />
         <action
-            android:id="@+id/action_challengesMainFragment_to_authoredChallengeDetailsFragment"
+            android:id="@+id/action_challengesMainFragment_to_listAuthoredChallengesFragment"
+            app:destination="@id/listAuthoredChallengesFragment" />
+        <action
+            android:id="@+id/action_challengesMainFragment_to_listCompletedChallengesFragment"
+            app:destination="@id/listCompletedChallengesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listAuthoredChallengesFragment"
+        android:name="com.magrathea.codewars.presentation.challenges.listchallenges.ListAuthoredChallengesFragment"
+        android:label="ListAuthoredChallengesFragment" >
+        <action
+            android:id="@+id/action_listAuthoredChallengesFragment_to_authoredChallengeDetailsFragment"
             app:destination="@id/authoredChallengeDetailsFragment" />
+        <argument
+            android:name="userName"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/listCompletedChallengesFragment"
+        android:name="com.magrathea.codewars.presentation.challenges.listchallenges.ListCompletedChallengesFragment"
+        android:label="ListCompletedChallengesFragment" >
         <action
-            android:id="@+id/action_challengesMainFragment_to_completedChallengeDetailsFragment"
+            android:id="@+id/action_listCompletedChallengesFragment_to_completedChallengeDetailsFragment"
             app:destination="@id/completedChallengeDetailsFragment" />
+        <argument android:name="userName" />
     </fragment>
 </navigation>
