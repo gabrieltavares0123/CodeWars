@@ -49,7 +49,7 @@ class ListMembersFragment : Fragment() {
     private lateinit var rvMembers: RecyclerView
     private lateinit var rvLastSearchedMembers: RecyclerView
     private lateinit var membersAdapter: MembersAdapter
-    private lateinit var lastSearchedAdapter: MembersAdapter
+    private lateinit var lastSearchedAdapter: MembersHorizontalAdapter
     private lateinit var membersLayoutManager: LinearLayoutManager
     private lateinit var lastSearchedLayoutManager: LinearLayoutManager
 
@@ -69,7 +69,7 @@ class ListMembersFragment : Fragment() {
         rvMembers.adapter = membersAdapter
 
         rvLastSearchedMembers = view.findViewById(R.id.rv_last_searched_members)
-        lastSearchedAdapter = MembersAdapter(fakeData)
+        lastSearchedAdapter = MembersHorizontalAdapter(fakeData)
         lastSearchedLayoutManager = LinearLayoutManager(view.context, LinearLayoutManager.HORIZONTAL, false)
         rvLastSearchedMembers.layoutManager = lastSearchedLayoutManager
         rvLastSearchedMembers.adapter = lastSearchedAdapter
