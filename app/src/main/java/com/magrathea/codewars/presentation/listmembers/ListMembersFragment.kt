@@ -43,7 +43,73 @@ class ListMembersFragment : Fragment() {
             name = "bb bbbbbbbb",
             ranks = Ranks(overall = 123),
             bestLanguage = Language(languageName = "javascript", rank = 11111111)
-        )
+        ),
+        User(
+            userName = "bbbbbbbbbb",
+            name = "bb bbbbbbbb",
+            ranks = Ranks(overall = 123),
+            bestLanguage = Language(languageName = "javascript", rank = 11111111)
+        ),
+        User(
+            userName = "bbbbbbbbbb",
+            name = "bb bbbbbbbb",
+            ranks = Ranks(overall = 123),
+            bestLanguage = Language(languageName = "javascript", rank = 11111111)
+        ),
+        User(
+            userName = "bbbbbbbbbb",
+            name = "bb bbbbbbbb",
+            ranks = Ranks(overall = 123),
+            bestLanguage = Language(languageName = "javascript", rank = 11111111)
+        ),
+        User(
+            userName = "bbbbbbbbbb",
+            name = "bb bbbbbbbb",
+            ranks = Ranks(overall = 123),
+            bestLanguage = Language(languageName = "javascript", rank = 11111111)
+        ),
+        User(
+            userName = "bbbbbbbbbb",
+            name = "bb bbbbbbbb",
+            ranks = Ranks(overall = 123),
+            bestLanguage = Language(languageName = "javascript", rank = 11111111)
+        ),
+        User(
+            userName = "bbbbbbbbbb",
+            name = "bb bbbbbbbb",
+            ranks = Ranks(overall = 123),
+            bestLanguage = Language(languageName = "javascript", rank = 11111111)
+        ),
+        User(
+            userName = "bbbbbbbbbb",
+            name = "bb bbbbbbbb",
+            ranks = Ranks(overall = 123),
+            bestLanguage = Language(languageName = "javascript", rank = 11111111)
+        ),
+        User(
+            userName = "bbbbbbbbbb",
+            name = "bb bbbbbbbb",
+            ranks = Ranks(overall = 123),
+            bestLanguage = Language(languageName = "javascript", rank = 11111111)
+        ),
+        User(
+            userName = "bbbbbbbbbb",
+            name = "bb bbbbbbbb",
+            ranks = Ranks(overall = 123),
+            bestLanguage = Language(languageName = "javascript", rank = 11111111)
+        ),
+        User(
+            userName = "bbbbbbbbbb",
+            name = "bb bbbbbbbb",
+            ranks = Ranks(overall = 123),
+            bestLanguage = Language(languageName = "javascript", rank = 11111111)
+        ),
+        User(
+            userName = "bbbbbbbbbb",
+            name = "bb bbbbbbbb",
+            ranks = Ranks(overall = 123),
+            bestLanguage = Language(languageName = "javascript", rank = 11111111)
+        ),
     )
 
     private lateinit var rvMembers: RecyclerView
