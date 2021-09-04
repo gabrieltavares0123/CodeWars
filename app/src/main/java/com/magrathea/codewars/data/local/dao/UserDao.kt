@@ -14,9 +14,9 @@ interface UserDao {
     @Query(value = "SELECT * FROM UserEntity WHERE username = :username")
     suspend fun findUserByUserName(username: String): UserEntity?
 
-    @Query(value = "SELECT * FROM UserEntity ORDER BY honor DESC LIMIT 5")
-    suspend fun fiveUsersOrderedByHonor(): List<UserEntity>
+    @Query(value = "SELECT * FROM UserEntity ORDER BY honor")
+    suspend fun findAllUsersOrderedByHonor(): List<UserEntity>
 
-    @Query(value = "SELECT * FROM UserEntity ORDER BY searchDate DESC LIMIT 5")
-    suspend fun fiveLastSearchedUsersBySearchDate(): List<UserEntity>
+    @Query(value = "SELECT * FROM UserEntity ORDER BY searchDate")
+    suspend fun findAllUsersOrderedBySearchDate(): List<UserEntity>
 }
