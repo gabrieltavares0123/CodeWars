@@ -1,9 +1,8 @@
 package com.magrathea.codewars.presentation.listmembers
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,101 +11,102 @@ import com.magrathea.codewars.R
 import com.magrathea.codewars.domain.model.Language
 import com.magrathea.codewars.domain.model.Ranks
 import com.magrathea.codewars.domain.model.User
+import com.magrathea.codewars.domain.repository.SortType
 
 class ListMembersFragment : Fragment() {
     private val fakeData = listOf(
         User(
-            userName = "aaaaaaa",
+            userName = "gabriel",
             name = "aaaaaaaa aaaaaaaaa",
             ranks = Ranks(overall = 1209),
             bestLanguage = Language(languageName = "kotlin", rank = 1)
         ),
         User(
-            userName = "bbbbbbbbbb",
+            userName = "joão",
             name = "bb bbbbbbbb",
             ranks = Ranks(overall = 123),
             bestLanguage = Language(languageName = "javascript", rank = 11111111)
         ),
         User(
-            userName = "bbbbbbbbbb",
+            userName = "pedro",
             name = "bb bbbbbbbb",
             ranks = Ranks(overall = 123),
             bestLanguage = Language(languageName = "javascript", rank = 11111111)
         ),
         User(
-            userName = "bbbbbbbbbb",
+            userName = "alguém",
             name = "bb bbbbbbbb",
             ranks = Ranks(overall = 123),
             bestLanguage = Language(languageName = "javascript", rank = 11111111)
         ),
         User(
-            userName = "bbbbbbbbbb",
+            userName = "cccccccccc",
             name = "bb bbbbbbbb",
             ranks = Ranks(overall = 123),
             bestLanguage = Language(languageName = "javascript", rank = 11111111)
         ),
         User(
-            userName = "bbbbbbbbbb",
+            userName = "alguma coisa",
             name = "bb bbbbbbbb",
             ranks = Ranks(overall = 123),
             bestLanguage = Language(languageName = "javascript", rank = 11111111)
         ),
         User(
-            userName = "bbbbbbbbbb",
+            userName = "nananana",
             name = "bb bbbbbbbb",
             ranks = Ranks(overall = 123),
             bestLanguage = Language(languageName = "javascript", rank = 11111111)
         ),
         User(
-            userName = "bbbbbbbbbb",
+            userName = "lalalala",
             name = "bb bbbbbbbb",
             ranks = Ranks(overall = 123),
             bestLanguage = Language(languageName = "javascript", rank = 11111111)
         ),
         User(
-            userName = "bbbbbbbbbb",
+            userName = "kkkkkkk",
             name = "bb bbbbbbbb",
             ranks = Ranks(overall = 123),
             bestLanguage = Language(languageName = "javascript", rank = 11111111)
         ),
         User(
-            userName = "bbbbbbbbbb",
+            userName = "hhhh",
             name = "bb bbbbbbbb",
             ranks = Ranks(overall = 123),
             bestLanguage = Language(languageName = "javascript", rank = 11111111)
         ),
         User(
-            userName = "bbbbbbbbbb",
+            userName = "dd pp oo iiu",
             name = "bb bbbbbbbb",
             ranks = Ranks(overall = 123),
             bestLanguage = Language(languageName = "javascript", rank = 11111111)
         ),
         User(
-            userName = "bbbbbbbbbb",
+            userName = "ff dddg hh",
             name = "bb bbbbbbbb",
             ranks = Ranks(overall = 123),
             bestLanguage = Language(languageName = "javascript", rank = 11111111)
         ),
         User(
-            userName = "bbbbbbbbbb",
+            userName = "bcdhfe sgfwe",
             name = "bb bbbbbbbb",
             ranks = Ranks(overall = 123),
             bestLanguage = Language(languageName = "javascript", rank = 11111111)
         ),
         User(
-            userName = "bbbbbbbbbb",
+            userName = "fwefg fewf",
             name = "bb bbbbbbbb",
             ranks = Ranks(overall = 123),
             bestLanguage = Language(languageName = "javascript", rank = 11111111)
         ),
         User(
-            userName = "bbbbbbbbbb",
+            userName = "hjyluioç",
             name = "bb bbbbbbbb",
             ranks = Ranks(overall = 123),
             bestLanguage = Language(languageName = "javascript", rank = 11111111)
         ),
         User(
-            userName = "bbbbbbbbbb",
+            userName = " qsqwe  qweqweq qweqw e",
             name = "bb bbbbbbbb",
             ranks = Ranks(overall = 123),
             bestLanguage = Language(languageName = "javascript", rank = 11111111)
@@ -132,14 +132,50 @@ class ListMembersFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         rvMembers = view.findViewById(R.id.rv_members)
         membersAdapter = MembersAdapter(fakeData)
-        membersLayoutManager = LinearLayoutManager(view.context, LinearLayoutManager.VERTICAL, false)
+        membersLayoutManager =
+            LinearLayoutManager(view.context, LinearLayoutManager.VERTICAL, false)
         rvMembers.layoutManager = membersLayoutManager
         rvMembers.adapter = membersAdapter
 
         rvLastSearchedMembers = view.findViewById(R.id.rv_last_searched_members)
         lastSearchedAdapter = MembersHorizontalAdapter(fakeData)
-        lastSearchedLayoutManager = LinearLayoutManager(view.context, LinearLayoutManager.HORIZONTAL, false)
+        lastSearchedLayoutManager =
+            LinearLayoutManager(view.context, LinearLayoutManager.HORIZONTAL, false)
         rvLastSearchedMembers.layoutManager = lastSearchedLayoutManager
         rvLastSearchedMembers.adapter = lastSearchedAdapter
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.list_members_menu, menu)
+
+        val searchView = menu.findItem(R.id.it_list_members_search).actionView as SearchView
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                viewModel.searchQuery(query)
+                searchView.onActionViewCollapsed()
+                return true
+            }
+        })
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.it_by_honor -> {
+                viewModel.sortMembers(SortType.HONOR)
+                true
+            }
+            R.id.it_by_search_date -> {
+                viewModel.sortMembers(SortType.SEARCH_DATE)
+                true
+            }
+            else -> {
+                false
+            }
+        }
     }
 }
