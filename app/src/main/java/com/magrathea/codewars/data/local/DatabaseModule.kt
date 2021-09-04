@@ -2,6 +2,9 @@ package com.magrathea.codewars.data.local
 
 import android.app.Application
 import androidx.room.Room
+import com.magrathea.codewars.data.local.dao.AuthoredChallengeDao
+import com.magrathea.codewars.data.local.dao.CompletedChallengeDao
+import com.magrathea.codewars.data.local.dao.UserDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,5 +25,20 @@ class DatabaseModule {
             CodeWarsDatabase::class.java,
             DATABASE_NAME
         ).build()
+    }
+
+    @Provides
+    fun provideUserDao(codeWarsDatabase: CodeWarsDatabase): UserDao {
+        return codeWarsDatabase.userDao()
+    }
+
+    @Provides
+    fun provideAuthoredChallengeDao(codeWarsDatabase: CodeWarsDatabase): AuthoredChallengeDao {
+        return codeWarsDatabase.authoredChallengeDao()
+    }
+
+    @Provides
+    fun provideCompletedChallengeDao(codeWarsDatabase: CodeWarsDatabase): CompletedChallengeDao {
+        return codeWarsDatabase.completedChallengeDao()
     }
 }
