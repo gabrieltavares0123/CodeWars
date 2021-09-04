@@ -17,12 +17,14 @@ class UserRepositoryImpl @Inject constructor(
     private val userDao: UserDao,
     private val userService: UserService,
 ) : UserRepository {
-    override suspend fun findUserByUserName(username: String): Resource<User> {
+    override suspend fun findUserByUserName(username: String): Resource<List<User>> {
         userService.findUserByUserName(username).collect { userDto ->
-            userDao.save(userDto.toUserEntity())
+            userDao.save(userDto.map { it.toUserEntity() })
         }
 
-        val domainUser = userDao.findUserByUserName(username)?.toDomainUser()
+        val domainUser = userDao.findUserByUserName(username)?.let { userEntityList ->
+            userEntityList.map { it.toDomainUser() }
+        }
 
         return Resource.Success(domainUser)
     }
@@ -42,3 +44,4 @@ class UserRepositoryImpl @Inject constructor(
         return MutableLiveData(usersListResource)
     }
 }
+
