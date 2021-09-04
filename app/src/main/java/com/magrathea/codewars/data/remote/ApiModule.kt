@@ -1,5 +1,6 @@
 package com.magrathea.codewars.data.remote
 
+import com.magrathea.codewars.data.remote.service.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -21,5 +22,20 @@ class ApiModule {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(CodeWarsApi::class.java)
+    }
+
+    @Provides
+    fun provideUserService(codeWarsApi: CodeWarsApi): UserService {
+        return UserServiceImpl(codeWarsApi)
+    }
+
+    @Provides
+    fun provideAuthoredChallengeService(codeWarsApi: CodeWarsApi): AuthoredChallengeService {
+        return AuthoredChallengeServiceImpl(codeWarsApi)
+    }
+
+    @Provides
+    fun provideCompletedChallengeService(codeWarsApi: CodeWarsApi): CompletedChallengeService {
+        return CompletedChallengeServiceImpl(codeWarsApi)
     }
 }

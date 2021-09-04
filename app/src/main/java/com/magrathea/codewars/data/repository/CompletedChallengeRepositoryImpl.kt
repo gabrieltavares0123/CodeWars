@@ -7,8 +7,9 @@ import com.magrathea.codewars.data.remote.service.CompletedChallengeService
 import com.magrathea.codewars.domain.model.CompletedChallenge
 import com.magrathea.codewars.domain.repository.CompletedChallengeRepository
 import kotlinx.coroutines.flow.collect
+import javax.inject.Inject
 
-class CompletedChallengeRepositoryImpl(
+class CompletedChallengeRepositoryImpl @Inject constructor(
     private val completedChallengeService: CompletedChallengeService,
     private val completedChallengeDao: CompletedChallengeDao,
 ) : CompletedChallengeRepository {
