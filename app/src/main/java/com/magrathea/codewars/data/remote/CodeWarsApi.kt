@@ -11,7 +11,7 @@ import retrofit2.http.Query
 
 interface CodeWarsApi {
     @GET(value = "/users/{user}")
-    suspend fun findUserByUserName(@Path(value = "user") username: String): Flow<UserDto>
+    suspend fun findUserByUserName(@Path(value = "user") username: String): Flow<List<UserDto>>
 
     @GET(value = "users/{username}/code-challenges/completed")
     suspend fun findCompletedChallengesByUser(
