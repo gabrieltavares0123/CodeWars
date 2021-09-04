@@ -24,7 +24,9 @@ class CompletedChallengeRepositoryImpl @Inject constructor(
                 completedChallengeDao.save(completedChallengeDtoList.data.toCompletedChallengeEntityList())
             }
 
-        val completedChallengesDomainList = completedChallengeDao.allCompletedChallengesByUserName(username, page).toCompletedChallengeDomainList()
+        val completedChallengesDomainList =
+            completedChallengeDao.allCompletedChallengesByUserName(username)
+                .toCompletedChallengeDomainList()
 
         return MutableLiveData(completedChallengesDomainList)
     }

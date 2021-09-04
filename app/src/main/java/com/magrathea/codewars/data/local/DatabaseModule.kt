@@ -1,6 +1,6 @@
 package com.magrathea.codewars.data.local
 
-import android.app.Application
+import android.content.Context
 import androidx.room.Room
 import com.magrathea.codewars.data.local.dao.AuthoredChallengeDao
 import com.magrathea.codewars.data.local.dao.CompletedChallengeDao
@@ -19,7 +19,7 @@ class DatabaseModule {
     }
 
     @Provides
-    fun provideDatabase(@ApplicationContext application: Application): CodeWarsDatabase {
+    fun provideDatabase(@ApplicationContext application: Context): CodeWarsDatabase {
         return Room.databaseBuilder(
             application,
             CodeWarsDatabase::class.java,
