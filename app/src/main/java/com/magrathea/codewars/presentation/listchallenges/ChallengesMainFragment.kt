@@ -44,13 +44,8 @@ class ChallengesMainFragment(
         bottomNavigationView = view.findViewById(R.id.bnv_user_challenges)
 
         setupBottomNavigation()
-//        setupViewPager()
     }
 
-/*    private fun setupViewPager() {
-        challengerViewPager.adapter = challengesPageAdapter
-        challengerViewPager.registerOnPageChangeCallback()
-    }*/
 
     private fun setupBottomNavigation() {
         bottomNavigationView.setOnItemSelectedListener { item ->
