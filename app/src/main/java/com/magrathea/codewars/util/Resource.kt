@@ -6,4 +6,5 @@ sealed class Resource<out T: Any> {
     object Loading: Resource<Nothing>()
 
     fun toData(): T? = if(this is Success) this.data else null
+    val isSuccess get() = this is Success
 }

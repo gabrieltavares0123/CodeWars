@@ -30,6 +30,4 @@ class ListMembersViewModel @Inject constructor(
             emitSource(userRepository.findAllBySortType(sortType))
         }
     }
-
-
 }
