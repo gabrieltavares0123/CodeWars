@@ -1,5 +1,7 @@
 package com.magrathea.codewars.data.repository
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.magrathea.codewars.data.local.dao.CompletedChallengeDao
 import com.magrathea.codewars.data.mapper.toCompletedChallengeDomainList
 import com.magrathea.codewars.data.mapper.toCompletedChallengeEntityList
@@ -16,12 +18,14 @@ class CompletedChallengeRepositoryImpl @Inject constructor(
     override suspend fun findCompletedChallengesByUser(
         username: String,
         page: Int
-    ): List<CompletedChallenge> {
+    ): LiveData<List<CompletedChallenge>> {
         completedChallengeService.findCompletedChallengesByUser(username, page)
             .collect { completedChallengeDtoList ->
                 completedChallengeDao.save(completedChallengeDtoList.data.toCompletedChallengeEntityList())
             }
 
-        return completedChallengeDao.allCompletedChallengesByUserName(username, page).toCompletedChallengeDomainList()
+        val completedChallengesDomainList = completedChallengeDao.allCompletedChallengesByUserName(username, page).toCompletedChallengeDomainList()
+
+        return MutableLiveData(completedChallengesDomainList)
     }
 }
