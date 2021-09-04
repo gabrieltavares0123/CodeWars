@@ -17,7 +17,7 @@ class UserRepositoryImpl @Inject constructor(
     private val userDao: UserDao,
     private val userService: UserService,
 ) : UserRepository {
-    override suspend fun findUserByUserName(username: String): Resource<List<User>> {
+    override suspend fun findUserByUserName(username: String): LiveData<Resource<List<User>>> {
         userService.findUserByUserName(username).collect { userDto ->
             userDao.save(userDto.map { it.toUserEntity() })
         }
@@ -26,7 +26,7 @@ class UserRepositoryImpl @Inject constructor(
             userEntityList.map { it.toDomainUser() }
         }
 
-        return Resource.Success(domainUser)
+        return MutableLiveData(Resource.Success(domainUser))
     }
 
     override suspend fun findAllBySortType(sortType: SortType): LiveData<Resource<List<User>>> {
