@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Code Wars</string>
+    <string name="tv_empty_search_result">There is no result from your search</string>
+    <string name="rank_label">Rank</string>
+    <string name="best_language_label">Best language</string>
+    <string name="honor_label">Honor</string>
+    <string name="authored_challenges">Authored</string>
+    <string name="completed_challenges">Completed</string>
+    <string name="there_is_no_data_to_show">There is no data to show</string>
+    <string name="name_label">Name:</string>
+    <string name="type_label">Type:</string>
 </resources>

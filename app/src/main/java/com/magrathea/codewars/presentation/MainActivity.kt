@@ -1,7 +1,8 @@
-package com.magrathea.codewars
+package com.magrathea.codewars.presentation
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.magrathea.codewars.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
