@@ -5,7 +5,9 @@
       <map>
         <entry key="..\:/Users/gabri/Documents/CodeWars/app/src/main/res/layout/activity_main.xml" value="0.20572916666666666" />
         <entry key="..\:/Users/gabri/Documents/CodeWars/app/src/main/res/layout/fragment_challenges_main.xml" value="0.2526041666666667" />
+        <entry key="..\:/Users/gabri/Documents/CodeWars/app/src/main/res/layout/fragment_list_authored_challenges.xml" value="0.33" />
         <entry key="..\:/Users/gabri/Documents/CodeWars/app/src/main/res/layout/fragment_list_challenges.xml" value="0.2526041666666667" />
+        <entry key="..\:/Users/gabri/Documents/CodeWars/app/src/main/res/layout/fragment_list_completed_challenges.xml" value="0.1859375" />
         <entry key="..\:/Users/gabri/Documents/CodeWars/app/src/main/res/layout/fragment_list_members.xml" value="0.33" />
         <entry key="..\:/Users/gabri/Documents/CodeWars/app/src/main/res/layout/list_challenge_item.xml" value="0.2526041666666667" />
         <entry key="..\:/Users/gabri/Documents/CodeWars/app/src/main/res/layout/list_item_member.xml" value="0.2546875" />
