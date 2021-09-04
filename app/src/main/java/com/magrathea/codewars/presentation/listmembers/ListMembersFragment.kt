@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.magrathea.codewars.R
@@ -112,6 +113,7 @@ class ListMembersFragment : Fragment() {
         ),
     )
 
+    private val viewModel: ListMembersViewModel by viewModels()
     private lateinit var rvMembers: RecyclerView
     private lateinit var rvLastSearchedMembers: RecyclerView
     private lateinit var membersAdapter: MembersAdapter

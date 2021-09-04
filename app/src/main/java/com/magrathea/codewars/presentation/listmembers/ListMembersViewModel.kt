@@ -1,6 +1,10 @@
 package com.magrathea.codewars.presentation.listmembers
 
 import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class ListMembersViewModel : ViewModel() {
+@HiltViewModel
+class ListMembersViewModel @Inject constructor() : ViewModel() {
+
 }
