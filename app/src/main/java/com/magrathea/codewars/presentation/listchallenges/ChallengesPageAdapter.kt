@@ -7,11 +7,11 @@ import com.magrathea.codewars.domain.model.User
 
 class ChallengesPageAdapter(
     fragmentActivity: FragmentActivity,
-    user: User,
+    username: String
 ) : FragmentStateAdapter(fragmentActivity) {
     private val fragmentsList = listOf(
-        ListAuthoredChallengesFragment.newInstance(user),
-        ListCompletedChallengesFragment.newInstance(user),
+        ListAuthoredChallengesFragment.newInstance(username),
+        ListCompletedChallengesFragment.newInstance(username),
     )
 
     override fun getItemCount(): Int = fragmentsList.size
