@@ -14,6 +14,14 @@ interface CompletedChallengeDao {
     suspend fun save(completedChallengeEntity: List<CompletedChallengeEntity>)
 
     @Transaction
-    @Query(value = "SELECT * FROM CompletedChallengeEntity, UserCompletedChallengeCrossRefEntity WHERE username= :username")
-    fun allCompletedChallengesByUserName(username: String, page: Int): UserWithCompletedChallenges
+    @Query(
+        value = "SELECT cc.id, cc.name, cc.completedAt " +
+                "FROM CompletedChallengeEntity AS cc " +
+                "INNER JOIN UserCompletedChallengeCrossRefEntity AS crossRef " +
+                "    ON cc.id = crossRef.id " +
+                "INNER JOIN UserEntity AS user " +
+                "    ON crossRef.userName = user.userName " +
+                "WHERE crossRef.username = :username"
+    )
+    suspend fun allCompletedChallengesByUserName(username: String): List<CompletedChallengeEntity>
 }
