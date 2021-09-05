@@ -68,6 +68,7 @@ dependencies {
     // Retrofit dependencies.
     implementation retrofit.retrofit
     implementation retrofit.converter_gson
+    implementation retrofit.logging_interceptor
 
     // Navigation dependencies.
     implementation navigation.navigation_fragment_ktx

@@ -4,19 +4,19 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.magrathea.codewars.data.local.entity.UserEntity
+import com.magrathea.codewars.model.User
 
 @Dao
 interface UserDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun save(userEntity: List<UserEntity>)
+    fun save(user: User)
 
-    @Query(value = "SELECT * FROM UserEntity WHERE username = :username")
-    suspend fun findUserByUserName(username: String): List<UserEntity>?
+    @Query(value = "SELECT * FROM User WHERE username = :username")
+    suspend fun findUserByUserName(username: String): User
 
-    @Query(value = "SELECT * FROM UserEntity ORDER BY honor")
-    suspend fun findAllUsersOrderedByHonor(): List<UserEntity>
+    @Query(value = "SELECT * FROM User ORDER BY honor DESC LIMIT 5")
+    suspend fun findLastFiveUsersOrderedByHonor(): List<User>
 
-    @Query(value = "SELECT * FROM UserEntity ORDER BY searchDate")
-    suspend fun findAllUsersOrderedBySearchDate(): List<UserEntity>
+    @Query(value = "SELECT * FROM User ORDER BY searchDate DESC LIMIT 5")
+    suspend fun findLastFiveLastUsersOrderedBySearchDate(): List<User>
 }

@@ -4,14 +4,18 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.magrathea.codewars.databinding.ListItemMemberHorizontalBinding
-import com.magrathea.codewars.domain.model.User
+import com.magrathea.codewars.model.User
 
 class MembersHorizontalAdapter(
     private val users: List<User>
 ) : RecyclerView.Adapter<MembersHorizontalAdapter.MemberViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MemberViewHolder {
         val memberItemBinding =
-            ListItemMemberHorizontalBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ListItemMemberHorizontalBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
         return MemberViewHolder(memberItemBinding)
     }
 
@@ -21,7 +25,7 @@ class MembersHorizontalAdapter(
                 binding.tvName.text = name
                 binding.tvRank.text = ranks?.overall.toString()
                 binding.tvBestLanguage.text = bestLanguage?.languageName ?: "none"
-                binding.tvBestLanguageRank.text = bestLanguage?.rank.toString()
+                binding.tvBestLanguageRank.text = bestLanguage?.languagePoints.toString()
             }
         }
     }

@@ -1,4 +1,4 @@
-package com.magrathea.codewars.domain.model
+package com.magrathea.codewars.model
 
 enum class ChallengeType {
     AUTHORED,

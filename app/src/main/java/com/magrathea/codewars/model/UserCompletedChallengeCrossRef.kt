@@ -1,9 +1,9 @@
-package com.magrathea.codewars.data.local.entity
+package com.magrathea.codewars.model
 
 import androidx.room.Entity
 
 @Entity(primaryKeys = ["userName", "id"])
-data class UserCompletedChallengeCrossRefEntity(
+data class UserCompletedChallengeCrossRef(
     val userName: String,
     val id: String
 )

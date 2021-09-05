@@ -1,8 +1,7 @@
 package com.magrathea.codewars.data.remote.service
 
-import com.magrathea.codewars.data.remote.entity.UserDto
-import kotlinx.coroutines.flow.Flow
+import com.magrathea.codewars.model.User
 
 interface UserService {
-    suspend fun findUserByUserName(username: String): Flow<List<UserDto>>
+    suspend fun findUserByUserName(username: String): User
 }
