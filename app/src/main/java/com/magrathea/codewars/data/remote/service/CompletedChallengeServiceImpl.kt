@@ -1,9 +1,9 @@
 package com.magrathea.codewars.data.remote.service
 
 import com.magrathea.codewars.data.remote.CodeWarsApi
-import com.magrathea.codewars.data.remote.dto.CompletedChallengeDto
-import com.magrathea.codewars.data.remote.dto.PagingResponse
-import kotlinx.coroutines.flow.Flow
+import com.magrathea.codewars.model.ChallengeResponse
+import com.magrathea.codewars.model.CompletedChallenge
+import retrofit2.await
 import javax.inject.Inject
 
 class CompletedChallengeServiceImpl @Inject constructor(
@@ -12,7 +12,7 @@ class CompletedChallengeServiceImpl @Inject constructor(
     override suspend fun findCompletedChallengesByUser(
         username: String,
         page: Int
-    ): Flow<PagingResponse<List<CompletedChallengeDto>>> {
-        return codeWarsApi.findCompletedChallengesByUser(username, page)
+    ): ChallengeResponse<CompletedChallenge> {
+        return codeWarsApi.findCompletedChallengesByUser(username, page).await()
     }
 }

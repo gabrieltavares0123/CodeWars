@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.magrathea.codewars.databinding.ListChallengeItemBinding
-import com.magrathea.codewars.domain.model.Challenge
+import com.magrathea.codewars.model.Challenge
 
 class ChallengesAdapter(
     private val challengesList: List<Challenge>

@@ -1,4 +1,4 @@
-package com.magrathea.codewars.domain.model
+package com.magrathea.codewars.model
 
 data class Challenge(
     val id: String,

@@ -4,10 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.magrathea.codewars.databinding.ListItemMemberBinding
-import com.magrathea.codewars.domain.model.User
+import com.magrathea.codewars.model.User
 
 class MembersAdapter(
-    var users: List<User>?,
+    var users: List<User>,
 ) : RecyclerView.Adapter<MembersAdapter.MemberViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MemberViewHolder {
         val memberItemBinding =
@@ -17,16 +17,16 @@ class MembersAdapter(
 
     override fun onBindViewHolder(holderMember: MemberViewHolder, position: Int) {
         with(holderMember) {
-            with(users?.get(position)) {
-                binding.tvName.text = this?.name
-                binding.tvRank.text = this?.ranks?.overall.toString()
-                binding.tvBestLanguage.text = this?.bestLanguage?.languageName ?: "none"
-                binding.tvBestLanguageRank.text = this?.bestLanguage?.rank.toString()
+            with(users[position]) {
+                binding.tvName.text = this.name
+                binding.tvRank.text = this.ranks?.overall.toString()
+                binding.tvBestLanguage.text = this.bestLanguage?.languageName ?: "none"
+                binding.tvBestLanguageRank.text = this.bestLanguage?.languageName ?: "none"
             }
         }
     }
 
-    override fun getItemCount() = users?.size ?: 0
+    override fun getItemCount() = users.size
 
     inner class MemberViewHolder(val binding: ListItemMemberBinding) :
         RecyclerView.ViewHolder(binding.root)

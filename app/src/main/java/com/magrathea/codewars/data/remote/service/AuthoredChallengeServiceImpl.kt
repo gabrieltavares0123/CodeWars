@@ -1,9 +1,9 @@
 package com.magrathea.codewars.data.remote.service
 
 import com.magrathea.codewars.data.remote.CodeWarsApi
-import com.magrathea.codewars.data.remote.dto.AuthoredChallengeDto
-import com.magrathea.codewars.data.remote.dto.PagingResponse
-import kotlinx.coroutines.flow.Flow
+import com.magrathea.codewars.model.AuthoredChallenge
+import com.magrathea.codewars.model.ChallengeResponse
+import retrofit2.await
 import javax.inject.Inject
 
 class AuthoredChallengeServiceImpl @Inject constructor(
@@ -12,7 +12,7 @@ class AuthoredChallengeServiceImpl @Inject constructor(
     override suspend fun findAuthoredChallengesByUser(
         username: String,
         page: Int
-    ): Flow<PagingResponse<List<AuthoredChallengeDto>>> {
-        return codeWarsApi.findAuthoredChallengesByUser(username, page)
+    ): ChallengeResponse<AuthoredChallenge> {
+        return codeWarsApi.findAuthoredChallengesByUser(username, page).await()
     }
 }

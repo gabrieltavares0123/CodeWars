@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.magrathea.codewars.R
 import com.magrathea.codewars.domain.repository.SortType
+import com.magrathea.codewars.model.User
 import com.magrathea.codewars.util.ResourceObserver
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -22,6 +23,81 @@ class ListMembersFragment : Fragment() {
     private lateinit var membersLayoutManager: LinearLayoutManager
     private lateinit var lastSearchedLayoutManager: LinearLayoutManager
 
+    private val fakeUsersList = listOf(
+        User(
+            username = "saasf",
+            name = "sadfag",
+            honor = 10,
+            leaderboardPosition = 1,
+        ),
+        User(
+            username = "saasf",
+            name = "sadfag",
+            honor = 10,
+            leaderboardPosition = 1,
+        ),
+        User(
+            username = "saasf",
+            name = "sadfag",
+            honor = 10,
+            leaderboardPosition = 1,
+        ),
+        User(
+            username = "saasf",
+            name = "sadfag",
+            honor = 10,
+            leaderboardPosition = 1,
+        ),
+        User(
+            username = "saasf",
+            name = "sadfag",
+            honor = 10,
+            leaderboardPosition = 1,
+        ),
+        User(
+            username = "saasf",
+            name = "sadfag",
+            honor = 10,
+            leaderboardPosition = 1,
+        ),
+        User(
+            username = "saasf",
+            name = "sadfag",
+            honor = 10,
+            leaderboardPosition = 1,
+        ),
+        User(
+            username = "saasf",
+            name = "sadfag",
+            honor = 10,
+            leaderboardPosition = 1,
+        ),
+        User(
+            username = "saasf",
+            name = "sadfag",
+            honor = 10,
+            leaderboardPosition = 1,
+        ),
+        User(
+            username = "saasf",
+            name = "sadfag",
+            honor = 10,
+            leaderboardPosition = 1,
+        ),
+        User(
+            username = "saasf",
+            name = "sadfag",
+            honor = 10,
+            leaderboardPosition = 1,
+        ),
+        User(
+            username = "saasf",
+            name = "sadfag",
+            honor = 10,
+            leaderboardPosition = 1,
+        ),
+    )
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -33,7 +109,7 @@ class ListMembersFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         rvMembers = view.findViewById(R.id.rv_members)
-        membersAdapter = MembersAdapter(null)
+        membersAdapter = MembersAdapter(fakeUsersList)
         membersLayoutManager =
             LinearLayoutManager(view.context, LinearLayoutManager.VERTICAL, false)
         rvMembers.layoutManager = membersLayoutManager

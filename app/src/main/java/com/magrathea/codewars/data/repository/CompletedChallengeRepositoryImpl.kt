@@ -3,11 +3,10 @@ package com.magrathea.codewars.data.repository
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.magrathea.codewars.data.local.dao.CompletedChallengeDao
-import com.magrathea.codewars.data.mapper.toCompletedChallengeDomainList
-import com.magrathea.codewars.data.mapper.toCompletedChallengeEntityList
 import com.magrathea.codewars.data.remote.service.CompletedChallengeService
-import com.magrathea.codewars.domain.model.CompletedChallenge
 import com.magrathea.codewars.domain.repository.CompletedChallengeRepository
+import com.magrathea.codewars.model.CompletedChallenge
+import com.magrathea.codewars.util.Resource
 import kotlinx.coroutines.flow.collect
 import javax.inject.Inject
 
@@ -18,16 +17,13 @@ class CompletedChallengeRepositoryImpl @Inject constructor(
     override suspend fun findCompletedChallengesByUser(
         username: String,
         page: Int
-    ): LiveData<List<CompletedChallenge>> {
-        completedChallengeService.findCompletedChallengesByUser(username, page)
-            .collect { completedChallengeDtoList ->
-                completedChallengeDao.save(completedChallengeDtoList.data.toCompletedChallengeEntityList())
-            }
+    ): LiveData<Resource<List<CompletedChallenge>>> {
+        completedChallengeDao.save(
+            completedChallengeService.findCompletedChallengesByUser(username, page).data
+        )
 
-        val completedChallengesDomainList =
-            completedChallengeDao.allCompletedChallengesByUserName(username)
-                .toCompletedChallengeDomainList()
+        val fromLocalDataSource = completedChallengeDao.allCompletedChallengesByUserName(username)
 
-        return MutableLiveData(completedChallengesDomainList)
+        return MutableLiveData(Resource.Success(fromLocalDataSource))
     }
 }

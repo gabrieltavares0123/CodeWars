@@ -3,45 +3,36 @@ package com.magrathea.codewars.data.repository
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.magrathea.codewars.data.local.dao.UserDao
-import com.magrathea.codewars.data.mapper.toDomainUser
-import com.magrathea.codewars.data.mapper.toUserEntity
 import com.magrathea.codewars.data.remote.service.UserService
-import com.magrathea.codewars.domain.model.User
 import com.magrathea.codewars.domain.repository.SortType
 import com.magrathea.codewars.domain.repository.UserRepository
+import com.magrathea.codewars.model.User
 import com.magrathea.codewars.util.Resource
-import kotlinx.coroutines.flow.collect
 import javax.inject.Inject
 
 class UserRepositoryImpl @Inject constructor(
     private val userDao: UserDao,
     private val userService: UserService,
 ) : UserRepository {
-    override suspend fun findUserByUserName(username: String): LiveData<Resource<List<User>>> {
-        userService.findUserByUserName(username).collect { userDto ->
-            userDao.save(userDto.map { it.toUserEntity() })
-        }
+    override suspend fun findUserByUserName(username: String): LiveData<Resource<User>> {
+        userDao.save(userService.findUserByUserName(username))
 
-        val domainUser = userDao.findUserByUserName(username)?.let { userEntityList ->
-            userEntityList.map { it.toDomainUser() }
-        }
+        val fromLocalDataSource = userDao.findUserByUserName(username)
 
-        return MutableLiveData(Resource.Success(domainUser))
+        return MutableLiveData(Resource.Success(fromLocalDataSource))
     }
 
     override suspend fun findAllBySortType(sortType: SortType): LiveData<Resource<List<User>>> {
-        val usersListResult = when (sortType) {
+        val users = when (sortType) {
             SortType.HONOR -> {
-                userDao.findAllUsersOrderedByHonor().map { it.toDomainUser() }
+                userDao.findLastFiveUsersOrderedByHonor()
             }
             SortType.SEARCH_DATE -> {
-                userDao.findAllUsersOrderedBySearchDate().map { it.toDomainUser() }
+                userDao.findLastFiveLastUsersOrderedBySearchDate()
             }
         }
 
-        val usersListResource = Resource.Success(usersListResult)
-
-        return MutableLiveData(usersListResource)
+        return MutableLiveData(Resource.Success(users))
     }
 }
 

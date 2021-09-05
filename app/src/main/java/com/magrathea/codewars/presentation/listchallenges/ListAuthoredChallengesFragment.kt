@@ -8,9 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.magrathea.codewars.R
-import com.magrathea.codewars.domain.model.AuthoredChallenge
-import com.magrathea.codewars.domain.model.Challenge
-import com.magrathea.codewars.domain.model.ChallengeType
+import com.magrathea.codewars.model.Challenge
+import com.magrathea.codewars.model.ChallengeType
 
 class ListAuthoredChallengesFragment(
     private val username: String
