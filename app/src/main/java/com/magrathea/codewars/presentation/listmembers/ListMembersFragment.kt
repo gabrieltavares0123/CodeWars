@@ -8,111 +8,12 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.magrathea.codewars.R
-import com.magrathea.codewars.domain.model.Language
-import com.magrathea.codewars.domain.model.Ranks
-import com.magrathea.codewars.domain.model.User
 import com.magrathea.codewars.domain.repository.SortType
+import com.magrathea.codewars.util.ResourceObserver
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ListMembersFragment : Fragment() {
-    private val fakeData = listOf(
-        User(
-            userName = "gabriel",
-            name = "aaaaaaaa aaaaaaaaa",
-            ranks = Ranks(overall = 1209),
-            bestLanguage = Language(languageName = "kotlin", rank = 1)
-        ),
-        User(
-            userName = "joão",
-            name = "bb bbbbbbbb",
-            ranks = Ranks(overall = 123),
-            bestLanguage = Language(languageName = "javascript", rank = 11111111)
-        ),
-        User(
-            userName = "pedro",
-            name = "bb bbbbbbbb",
-            ranks = Ranks(overall = 123),
-            bestLanguage = Language(languageName = "javascript", rank = 11111111)
-        ),
-        User(
-            userName = "alguém",
-            name = "bb bbbbbbbb",
-            ranks = Ranks(overall = 123),
-            bestLanguage = Language(languageName = "javascript", rank = 11111111)
-        ),
-        User(
-            userName = "cccccccccc",
-            name = "bb bbbbbbbb",
-            ranks = Ranks(overall = 123),
-            bestLanguage = Language(languageName = "javascript", rank = 11111111)
-        ),
-        User(
-            userName = "alguma coisa",
-            name = "bb bbbbbbbb",
-            ranks = Ranks(overall = 123),
-            bestLanguage = Language(languageName = "javascript", rank = 11111111)
-        ),
-        User(
-            userName = "nananana",
-            name = "bb bbbbbbbb",
-            ranks = Ranks(overall = 123),
-            bestLanguage = Language(languageName = "javascript", rank = 11111111)
-        ),
-        User(
-            userName = "lalalala",
-            name = "bb bbbbbbbb",
-            ranks = Ranks(overall = 123),
-            bestLanguage = Language(languageName = "javascript", rank = 11111111)
-        ),
-        User(
-            userName = "kkkkkkk",
-            name = "bb bbbbbbbb",
-            ranks = Ranks(overall = 123),
-            bestLanguage = Language(languageName = "javascript", rank = 11111111)
-        ),
-        User(
-            userName = "hhhh",
-            name = "bb bbbbbbbb",
-            ranks = Ranks(overall = 123),
-            bestLanguage = Language(languageName = "javascript", rank = 11111111)
-        ),
-        User(
-            userName = "dd pp oo iiu",
-            name = "bb bbbbbbbb",
-            ranks = Ranks(overall = 123),
-            bestLanguage = Language(languageName = "javascript", rank = 11111111)
-        ),
-        User(
-            userName = "ff dddg hh",
-            name = "bb bbbbbbbb",
-            ranks = Ranks(overall = 123),
-            bestLanguage = Language(languageName = "javascript", rank = 11111111)
-        ),
-        User(
-            userName = "bcdhfe sgfwe",
-            name = "bb bbbbbbbb",
-            ranks = Ranks(overall = 123),
-            bestLanguage = Language(languageName = "javascript", rank = 11111111)
-        ),
-        User(
-            userName = "fwefg fewf",
-            name = "bb bbbbbbbb",
-            ranks = Ranks(overall = 123),
-            bestLanguage = Language(languageName = "javascript", rank = 11111111)
-        ),
-        User(
-            userName = "hjyluioç",
-            name = "bb bbbbbbbb",
-            ranks = Ranks(overall = 123),
-            bestLanguage = Language(languageName = "javascript", rank = 11111111)
-        ),
-        User(
-            userName = " qsqwe  qweqweq qweqw e",
-            name = "bb bbbbbbbb",
-            ranks = Ranks(overall = 123),
-            bestLanguage = Language(languageName = "javascript", rank = 11111111)
-        ),
-    )
-
     private val viewModel: ListMembersViewModel by viewModels()
     private lateinit var rvMembers: RecyclerView
     private lateinit var rvLastSearchedMembers: RecyclerView
@@ -126,23 +27,26 @@ class ListMembersFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        setHasOptionsMenu(true)
         return inflater.inflate(R.layout.fragment_list_members, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         rvMembers = view.findViewById(R.id.rv_members)
-        membersAdapter = MembersAdapter(fakeData)
+        membersAdapter = MembersAdapter(null)
         membersLayoutManager =
             LinearLayoutManager(view.context, LinearLayoutManager.VERTICAL, false)
         rvMembers.layoutManager = membersLayoutManager
         rvMembers.adapter = membersAdapter
 
         rvLastSearchedMembers = view.findViewById(R.id.rv_last_searched_members)
-        lastSearchedAdapter = MembersHorizontalAdapter(fakeData)
+//        lastSearchedAdapter = MembersHorizontalAdapter(fakeData)
         lastSearchedLayoutManager =
             LinearLayoutManager(view.context, LinearLayoutManager.HORIZONTAL, false)
         rvLastSearchedMembers.layoutManager = lastSearchedLayoutManager
-        rvLastSearchedMembers.adapter = lastSearchedAdapter
+//        rvLastSearchedMembers.adapter = lastSearchedAdapter
+
+        setupMembersData()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -177,5 +81,14 @@ class ListMembersFragment : Fragment() {
                 false
             }
         }
+    }
+
+    private fun setupMembersData() {
+        viewModel.sortedMembers.observe(
+            viewLifecycleOwner,
+            ResourceObserver {
+                membersAdapter.users = it
+            }
+        )
     }
 }

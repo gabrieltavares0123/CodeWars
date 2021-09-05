@@ -1,7 +1,9 @@
 package com.magrathea.codewars.presentation.listmembers
 
-import androidx.lifecycle.*
-import com.magrathea.codewars.domain.model.User
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.liveData
+import androidx.lifecycle.switchMap
 import com.magrathea.codewars.domain.repository.SortType
 import com.magrathea.codewars.domain.repository.UserRepository
 import com.magrathea.codewars.util.Resource
@@ -24,7 +26,7 @@ class ListMembersViewModel @Inject constructor(
         sortMembers.value = sortType
     }
 
-    val lastSearchedMembersSorted = sortMembers.switchMap { sortType ->
+    val sortedMembers = sortMembers.switchMap { sortType ->
         liveData {
             emit(Resource.Loading)
             emitSource(userRepository.findAllBySortType(sortType))
