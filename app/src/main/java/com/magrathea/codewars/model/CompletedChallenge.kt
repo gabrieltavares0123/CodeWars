@@ -9,9 +9,9 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 @Entity
 data class CompletedChallenge(
-    @PrimaryKey var id: String,
-    var name: String? = null,
-    var slug: String? = null,
-    var completedAt: String? = null,
-    @TypeConverters var completedLanguages: List<String>? = emptyList(),
+    @PrimaryKey val id: String,
+    val name: String? = null,
+    val slug: String? = null,
+    val completedAt: String? = null,
+    @TypeConverters val completedLanguages: List<String>? = emptyList(),
 ) : Parcelable

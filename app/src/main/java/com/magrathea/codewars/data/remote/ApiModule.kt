@@ -1,7 +1,5 @@
 package com.magrathea.codewars.data.remote
 
-import com.google.gson.Gson
-import com.google.gson.GsonBuilder
 import com.magrathea.codewars.data.remote.service.*
 import dagger.Module
 import dagger.Provides
@@ -21,24 +19,17 @@ class ApiModule {
 
     @Provides
     fun provideInterceptorClient(): OkHttpClient {
-        val interceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BASIC)
+        val interceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
         return OkHttpClient.Builder()
             .addInterceptor(interceptor)
             .build()
     }
 
     @Provides
-    fun provideGson(): Gson {
-        return GsonBuilder()
-            .setLenient()
-            .create();
-    }
-
-    @Provides
-    fun provideCodeWarApi(okHttpClient: OkHttpClient/*, gson: Gson*/): CodeWarsApi {
+    fun provideCodeWarApi(okHttpClient: OkHttpClient): CodeWarsApi {
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create(/*gson*/))
+            .addConverterFactory(GsonConverterFactory.create())
             .client(okHttpClient)
             .build()
             .create(CodeWarsApi::class.java)

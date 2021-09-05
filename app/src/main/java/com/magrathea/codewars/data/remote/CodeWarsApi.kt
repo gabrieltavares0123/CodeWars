@@ -6,19 +6,23 @@ import com.magrathea.codewars.model.CompletedChallenge
 import com.magrathea.codewars.model.User
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.Headers
 import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface CodeWarsApi {
+    @Headers(value = ["Accept: application/json"])
     @GET(value = "/users/{user}")
     fun findUserByUserName(@Path(value = "user") username: String): Call<User>
 
+    @Headers(value = ["Accept: application/json"])
     @GET(value = "users/{username}/code-challenges/completed")
     fun findCompletedChallengesByUser(
         @Path(value = "username") username: String,
         @Query(value = "page") page: Int,
     ): Call<ChallengeResponse<CompletedChallenge>>
 
+    @Headers(value = ["Accept: application/json"])
     @GET(value = "users/{username}/code-challenges/authored")
     fun findAuthoredChallengesByUser(
         @Path(value = "username") username: String,
