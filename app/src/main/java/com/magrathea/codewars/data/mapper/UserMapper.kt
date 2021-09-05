@@ -1,7 +1,7 @@
 package com.magrathea.codewars.data.mapper
 
 import com.magrathea.codewars.data.local.entity.UserEntity
-import com.magrathea.codewars.data.remote.entity.UserDto
+import com.magrathea.codewars.data.remote.dto.UserDto
 import com.magrathea.codewars.domain.model.User
 
 fun UserDto.toUserEntity(): UserEntity {

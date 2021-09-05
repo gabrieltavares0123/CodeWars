@@ -1,9 +1,9 @@
 package com.magrathea.codewars.data.remote
 
-import com.magrathea.codewars.data.remote.entity.AuthoredChallengeDto
-import com.magrathea.codewars.data.remote.entity.CompletedChallengeDto
-import com.magrathea.codewars.data.remote.entity.PagingResponse
-import com.magrathea.codewars.data.remote.entity.UserDto
+import com.magrathea.codewars.data.remote.dto.AuthoredChallengeDto
+import com.magrathea.codewars.data.remote.dto.CompletedChallengeDto
+import com.magrathea.codewars.data.remote.dto.PagingResponse
+import com.magrathea.codewars.data.remote.dto.UserDto
 import kotlinx.coroutines.flow.Flow
 import retrofit2.http.GET
 import retrofit2.http.Path

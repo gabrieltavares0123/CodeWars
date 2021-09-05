@@ -1,7 +1,7 @@
 package com.magrathea.codewars.data.mapper
 
 import com.magrathea.codewars.data.local.entity.RanksEntity
-import com.magrathea.codewars.data.remote.entity.RanksDto
+import com.magrathea.codewars.data.remote.dto.RanksDto
 import com.magrathea.codewars.domain.model.Ranks
 
 fun RanksDto.toRanksEntity(): RanksEntity {

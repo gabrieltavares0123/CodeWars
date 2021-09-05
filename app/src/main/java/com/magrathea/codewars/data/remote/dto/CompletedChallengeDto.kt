@@ -1,4 +1,4 @@
-package com.magrathea.codewars.data.remote.entity
+package com.magrathea.codewars.data.remote.dto
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

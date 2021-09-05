@@ -1,8 +1,8 @@
 package com.magrathea.codewars.data.remote.service
 
 import com.magrathea.codewars.data.remote.CodeWarsApi
-import com.magrathea.codewars.data.remote.entity.CompletedChallengeDto
-import com.magrathea.codewars.data.remote.entity.PagingResponse
+import com.magrathea.codewars.data.remote.dto.CompletedChallengeDto
+import com.magrathea.codewars.data.remote.dto.PagingResponse
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 

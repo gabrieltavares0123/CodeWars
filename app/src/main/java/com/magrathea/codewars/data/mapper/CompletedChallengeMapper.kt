@@ -1,7 +1,7 @@
 package com.magrathea.codewars.data.mapper
 
 import com.magrathea.codewars.data.local.entity.CompletedChallengeEntity
-import com.magrathea.codewars.data.remote.entity.CompletedChallengeDto
+import com.magrathea.codewars.data.remote.dto.CompletedChallengeDto
 import com.magrathea.codewars.domain.model.CompletedChallenge
 
 fun List<CompletedChallengeDto>.toCompletedChallengeEntityList(): List<CompletedChallengeEntity> {

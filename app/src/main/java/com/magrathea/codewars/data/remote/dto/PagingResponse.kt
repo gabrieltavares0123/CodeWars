@@ -1,4 +1,4 @@
-package com.magrathea.codewars.data.remote.entity
+package com.magrathea.codewars.data.remote.dto
 
 data class PagingResponse<T>(
     val totalPages: Int = 0,

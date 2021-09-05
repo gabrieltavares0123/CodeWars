@@ -1,7 +1,7 @@
 package com.magrathea.codewars.data.mapper
 
 import com.magrathea.codewars.data.local.entity.AuthoredChallengeEntity
-import com.magrathea.codewars.data.remote.entity.AuthoredChallengeDto
+import com.magrathea.codewars.data.remote.dto.AuthoredChallengeDto
 import com.magrathea.codewars.domain.model.AuthoredChallenge
 
 fun List<AuthoredChallengeDto>.toAuthoredChallengeEntityList(username: String): List<AuthoredChallengeEntity> {
