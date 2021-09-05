@@ -16,5 +16,5 @@ data class AuthoredChallenge(
     val rankName: String? = null,
     @TypeConverters val tags: List<String>? = emptyList(),
     @TypeConverters val languages: List<String>? = emptyList(),
-    val userNameAuthor: String,
+    val userNameAuthor: String?,
 ) : Parcelable
