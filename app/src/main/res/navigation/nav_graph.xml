@@ -9,7 +9,7 @@
         android:name="com.magrathea.codewars.presentation.listmembers.SearchMemberFragment"
         android:label="ListMembersFragment">
         <action
-            android:id="@+id/action_listMembersFragment_to_challengesMainFragment"
+            android:id="@+id/action_show_user_challenges"
             app:destination="@id/challengesMainFragment" />
     </fragment>
     <fragment

@@ -8,7 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.magrathea.codewars.databinding.ListItemMemberBinding
 import com.magrathea.codewars.model.User
 
-class LastMembersAdapter :
+class LastMembersAdapter(
+    private val listener: (username: String) -> Unit,
+) :
     ListAdapter<User, LastMembersAdapter.UserViewHolder>(LastMembersAdapter) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
         return UserViewHolder.from(parent)
@@ -16,6 +18,7 @@ class LastMembersAdapter :
 
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
         val item = getItem(position)
+        holder.itemView.setOnClickListener { listener(item.username) }
         holder.bind(item)
     }
 

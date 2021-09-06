@@ -5,6 +5,7 @@ import android.view.*
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.magrathea.codewars.R
 import com.magrathea.codewars.databinding.FragmentSearchMemberBinding
@@ -46,8 +47,9 @@ class SearchMemberFragment : Fragment() {
         binding.rvLastMembers.layoutManager = lastMembersLayoutManager
         binding.viewModel = viewModel
 
-        lastMembersAdapter = LastMembersAdapter()
+        lastMembersAdapter = LastMembersAdapter(::navigateToChallenges)
         binding.rvLastMembers.adapter = lastMembersAdapter
+
         viewModel.sortMembersByEmission
             .observe(viewLifecycleOwner, ResourceObserver(lastMembersAdapter::submitList))
         viewModel.searchForEmission
@@ -93,5 +95,10 @@ class SearchMemberFragment : Fragment() {
                 false
             }
         }
+    }
+
+    private fun navigateToChallenges(username: String) {
+        val directions = SearchMemberFragmentDirections.actionShowUserChallenges(username, "Challenges")
+        findNavController().navigate(directions)
     }
 }
