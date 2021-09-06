@@ -10,6 +10,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import java.util.concurrent.Executors
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -24,7 +25,14 @@ class DatabaseModule {
             application,
             CodeWarsDatabase::class.java,
             DATABASE_NAME
-        ).fallbackToDestructiveMigration().build()
+        )
+            .setQueryCallback(
+                { sqlQuery, bindArgs ->
+                    println("SQL Query: $sqlQuery SQL Args: $bindArgs")
+                }, Executors.newSingleThreadExecutor()
+            )
+            .fallbackToDestructiveMigration()
+            .build()
     }
 
     @Provides
