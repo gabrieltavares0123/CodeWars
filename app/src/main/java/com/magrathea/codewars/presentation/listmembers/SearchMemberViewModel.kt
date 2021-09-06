@@ -1,10 +1,8 @@
 package com.magrathea.codewars.presentation.listmembers
 
-import android.view.View
 import androidx.lifecycle.*
 import com.magrathea.codewars.domain.repository.SortType
 import com.magrathea.codewars.domain.repository.UserRepository
-import com.magrathea.codewars.model.User
 import com.magrathea.codewars.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -15,7 +13,6 @@ class SearchMemberViewModel @Inject constructor(
 ) : ViewModel() {
     private val sortMembersBy = MutableLiveData<SortType>()
     private val searchFor = MutableLiveData<String>()
-    private val searchAndSortMediator = MediatorLiveData<Resource<List<User>>>()
 
     fun searchFor(query: String?) {
         query?.let { searchFor.value = it }
@@ -36,6 +33,16 @@ class SearchMemberViewModel @Inject constructor(
         liveData {
             emit(Resource.Loading)
             emitSource(userRepository.findLastFiveUsersBySortType(it))
+        }
+    }
+
+    val isLoading = MediatorLiveData<Boolean>().also { mediator ->
+        mediator.addSource(searchForEmission) {
+            mediator.value = it.isLoading
+        }
+
+        mediator.addSource(sortMembersByEmission) {
+            mediator.value = it.isLoading
         }
     }
 }
