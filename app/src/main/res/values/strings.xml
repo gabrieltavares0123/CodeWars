@@ -2,15 +2,16 @@
     <string name="app_name">Code Wars</string>
     <string name="tv_empty_search_result">There is no result from your search</string>
     <string name="rank_label">Rank</string>
-    <string name="best_language_label">Best language</string>
+    <string name="best_language_name_label">Language</string>
     <string name="honor_label">Honor</string>
     <string name="authored_challenges">Authored</string>
     <string name="completed_challenges">Completed</string>
     <string name="no_data_to_show">No data to show</string>
-    <string name="name_label">Name:</string>
-    <string name="type_label">Type:</string>
+    <string name="name_label">Name</string>
+    <string name="type_label">Type</string>
     <string name="search">Search</string>
     <string name="sort_options">Sort options</string>
     <string name="sort_by_search_date">Last searched</string>
     <string name="sort_by_honor">Sort by honor</string>
+    <string name="best_language_points_label">Points</string>
 </resources>

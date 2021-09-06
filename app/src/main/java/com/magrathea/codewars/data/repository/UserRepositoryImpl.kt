@@ -16,7 +16,7 @@ class UserRepositoryImpl @Inject constructor(
     private val userDao: UserDao,
     private val userService: UserService,
 ) : UserRepository {
-    override suspend fun findUserByUserName(username: String): LiveData<Resource<User>> {
+    override suspend fun findUserByUserName(username: String): LiveData<Resource<List<User>>> {
         return try {
             var searchedMember = userDao.findUserByUserName(username)
 
@@ -27,7 +27,7 @@ class UserRepositoryImpl @Inject constructor(
             }
             userDao.save(searchedMember)
 
-            MutableLiveData(Resource.Success(searchedMember))
+            MutableLiveData(Resource.Success(listOf(searchedMember)))
         } catch (ex: Throwable) {
             MutableLiveData(Resource.Error(ex))
         }

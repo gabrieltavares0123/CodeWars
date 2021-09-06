@@ -19,7 +19,7 @@ data class User(
 ) : Parcelable {
     @Ignore
     @IgnoredOnParcel
-    val realUserName = name ?: username
+    var realUserName = name ?: username
 
     @Ignore
     @IgnoredOnParcel
