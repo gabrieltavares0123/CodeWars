@@ -6,6 +6,7 @@ import com.magrathea.codewars.data.local.dao.UserDao
 import com.magrathea.codewars.data.remote.service.UserService
 import com.magrathea.codewars.domain.repository.SortType
 import com.magrathea.codewars.domain.repository.UserRepository
+import com.magrathea.codewars.model.BestLanguage
 import com.magrathea.codewars.model.User
 import com.magrathea.codewars.util.Resource
 import java.lang.System.currentTimeMillis
@@ -18,11 +19,18 @@ class UserRepositoryImpl @Inject constructor(
     override suspend fun findUserByUserName(username: String): LiveData<Resource<User>> {
         val searchedMember = userService.findUserByUserName(username)
         searchedMember.searchDate = currentTimeMillis()
+        searchedMember.bestLanguage = getBestLanguage(searchedMember)
         userDao.save(searchedMember)
 
         val fromLocalDataSource = userDao.findUserByUserName(username)
 
         return MutableLiveData(Resource.Success(fromLocalDataSource))
+    }
+
+    private fun getBestLanguage(user: User): BestLanguage? {
+        val languages = user.ranks?.languages
+        val entry = languages?.entries?.maxByOrNull { it.value.score }
+        return if (entry != null) BestLanguage(entry.key, entry.value.score) else null
     }
 
     override suspend fun findLastFiveUsersBySortType(sortType: SortType): LiveData<Resource<List<User>>> {
