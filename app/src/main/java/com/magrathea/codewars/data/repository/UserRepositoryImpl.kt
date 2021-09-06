@@ -9,7 +9,7 @@ import com.magrathea.codewars.domain.repository.UserRepository
 import com.magrathea.codewars.model.BestLanguage
 import com.magrathea.codewars.model.User
 import com.magrathea.codewars.util.Resource
-import java.lang.System.currentTimeMillis
+import java.util.*
 import javax.inject.Inject
 
 class UserRepositoryImpl @Inject constructor(
@@ -17,14 +17,20 @@ class UserRepositoryImpl @Inject constructor(
     private val userService: UserService,
 ) : UserRepository {
     override suspend fun findUserByUserName(username: String): LiveData<Resource<User>> {
-        val searchedMember = userService.findUserByUserName(username)
-        searchedMember.searchDate = currentTimeMillis()
-        searchedMember.bestLanguage = getBestLanguage(searchedMember)
-        userDao.save(searchedMember)
+        return try {
+            var searchedMember = userDao.findUserByUserName(username)
 
-        val fromLocalDataSource = userDao.findUserByUserName(username)
+            searchedMember.let {
+                searchedMember = userService.findUserByUserName(username)
+                searchedMember.searchDate = Date().time
+                searchedMember.bestLanguage = getBestLanguage(searchedMember)
+            }
+            userDao.save(searchedMember)
 
-        return MutableLiveData(Resource.Success(fromLocalDataSource))
+            MutableLiveData(Resource.Success(searchedMember))
+        } catch (ex: Throwable) {
+            MutableLiveData(Resource.Error(ex))
+        }
     }
 
     private fun getBestLanguage(user: User): BestLanguage? {

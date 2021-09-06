@@ -9,7 +9,7 @@ import com.magrathea.codewars.model.User
 @Dao
 interface UserDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun save(user: User)
+    suspend fun save(user: User)
 
     @Query(value = "SELECT * FROM User WHERE username = :username")
     suspend fun findUserByUserName(username: String): User
