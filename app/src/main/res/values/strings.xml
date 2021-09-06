@@ -6,7 +6,7 @@
     <string name="honor_label">Honor</string>
     <string name="authored_challenges">Authored</string>
     <string name="completed_challenges">Completed</string>
-    <string name="there_is_no_data_to_show">There is no data to show</string>
+    <string name="no_data_to_show">No data to show</string>
     <string name="name_label">Name:</string>
     <string name="type_label">Type:</string>
     <string name="search">Search</string>
