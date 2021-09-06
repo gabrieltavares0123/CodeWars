@@ -33,7 +33,7 @@ class LastMembersAdapter(
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: User) {
             with(binding) {
-                this.name = item.name
+                this.name = item.realUserName
                 this.rank = item.leaderboardPosition.toString()
                 this.bestLanguageName = item.bestLanguage?.languageName
                 this.bestLanguagePoints = item.bestLanguage?.languagePoints.toString()

@@ -13,10 +13,14 @@ import kotlinx.parcelize.Parcelize
 data class User(
     @PrimaryKey
     val username: String,
-    val name: String,
+    val name: String?,
     val honor: Int,
     val leaderboardPosition: Int,
 ) : Parcelable {
+    @Ignore
+    @IgnoredOnParcel
+    val realUserName = name ?: username
+
     @Ignore
     @IgnoredOnParcel
     var ranks: Ranks? = null
