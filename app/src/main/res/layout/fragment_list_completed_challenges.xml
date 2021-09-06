@@ -34,7 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="136dp"
-        android:text="@string/there_is_no_data_to_show"
+        android:text="@string/no_data_to_show"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"

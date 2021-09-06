@@ -19,7 +19,7 @@ import com.magrathea.codewars.model.UserCompletedChallengeCrossRef
         CompletedChallenge::class,
         UserCompletedChallengeCrossRef::class,
     ],
-    version = 2,
+    version = 1,
     exportSchema = false
 )
 @TypeConverters(
