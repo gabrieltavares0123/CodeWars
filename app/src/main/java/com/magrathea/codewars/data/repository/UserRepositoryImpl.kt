@@ -8,6 +8,7 @@ import com.magrathea.codewars.domain.repository.SortType
 import com.magrathea.codewars.domain.repository.UserRepository
 import com.magrathea.codewars.model.User
 import com.magrathea.codewars.util.Resource
+import java.lang.System.currentTimeMillis
 import javax.inject.Inject
 
 class UserRepositoryImpl @Inject constructor(
@@ -15,14 +16,16 @@ class UserRepositoryImpl @Inject constructor(
     private val userService: UserService,
 ) : UserRepository {
     override suspend fun findUserByUserName(username: String): LiveData<Resource<User>> {
-        userDao.save(userService.findUserByUserName(username))
+        val searchedMember = userService.findUserByUserName(username)
+        searchedMember.searchDate = currentTimeMillis()
+        userDao.save(searchedMember)
 
         val fromLocalDataSource = userDao.findUserByUserName(username)
 
         return MutableLiveData(Resource.Success(fromLocalDataSource))
     }
 
-    override suspend fun findAllBySortType(sortType: SortType): LiveData<Resource<List<User>>> {
+    override suspend fun findLastFiveUsersBySortType(sortType: SortType): LiveData<Resource<List<User>>> {
         val users = when (sortType) {
             SortType.HONOR -> {
                 userDao.findLastFiveUsersOrderedByHonor()

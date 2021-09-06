@@ -6,5 +6,5 @@ import com.magrathea.codewars.util.Resource
 
 interface UserRepository {
     suspend fun findUserByUserName(username: String): LiveData<Resource<User>>
-    suspend fun findAllBySortType(sortType: SortType): LiveData<Resource<List<User>>>
+    suspend fun findLastFiveUsersBySortType(sortType: SortType): LiveData<Resource<List<User>>>
 }
