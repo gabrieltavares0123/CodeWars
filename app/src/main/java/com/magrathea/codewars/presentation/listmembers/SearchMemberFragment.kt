@@ -24,6 +24,7 @@ class SearchMemberFragment : Fragment() {
     private lateinit var lastMembersLayoutManager: LinearLayoutManager
     private lateinit var lastMembersAdapter: LastMembersAdapter
     private lateinit var binding: FragmentSearchMemberBinding
+    private var sortType = SortType.SEARCH_DATE
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -55,7 +56,7 @@ class SearchMemberFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        viewModel.sortMembersBy(SortType.SEARCH_DATE)
+        viewModel.sortMembersBy(sortType)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -79,11 +80,13 @@ class SearchMemberFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.it_by_honor -> {
-                viewModel.sortMembersBy(SortType.HONOR)
+                sortType = SortType.HONOR
+                viewModel.sortMembersBy(sortType)
                 true
             }
             R.id.it_by_search_date -> {
-                viewModel.sortMembersBy(SortType.SEARCH_DATE)
+                sortType = SortType.SEARCH_DATE
+                viewModel.sortMembersBy(sortType)
                 true
             }
             else -> {

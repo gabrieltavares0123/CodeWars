@@ -45,4 +45,14 @@ class SearchMemberViewModel @Inject constructor(
             mediator.value = it.isLoading
         }
     }
+
+    val hasDataToShow = MediatorLiveData<Boolean>().also { mediator ->
+        mediator.addSource(searchForEmission) {
+            mediator.value = it.isSuccess && it.toData()?.isEmpty() == true
+        }
+
+        mediator.addSource(sortMembersByEmission) {
+            mediator.value = it.isSuccess && it.toData()?.isEmpty() == true
+        }
+    }
 }
